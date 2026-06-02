@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E6640CA2FCF38D00061007A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4E6640C92FCF38D00061007A /* README.md */; };
 		B209E8CA2F55BB34002366A5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F36CDD2E979DC000E7763C /* WidgetKit.framework */; };
 		B209E8CB2F55BB34002366A5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F36CDF2E979DC000E7763C /* SwiftUI.framework */; };
 		B209E8D62F55BB35002366A5 /* iOS Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B209E8C92F55BB33002366A5 /* iOS Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E6640C92FCF38D00061007A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B209E8C92F55BB33002366A5 /* iOS Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iOS Widgets.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B23F3FEC2F48E281002BD399 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.2.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		B240E69B2E7BE27500D2B6ED /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +277,7 @@
 		B240E6922E7BE27500D2B6ED = {
 			isa = PBXGroup;
 			children = (
+				4E6640C92FCF38D00061007A /* README.md */,
 				B240E69D2E7BE27500D2B6ED /* iOS */,
 				B2ED385E2E7BFD7500612569 /* Shared */,
 				B240E6AC2E7BE27600D2B6ED /* watchOS */,
@@ -457,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E6640CA2FCF38D00061007A /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
