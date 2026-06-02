@@ -1,0 +1,1031 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B209E8CA2F55BB34002366A5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F36CDD2E979DC000E7763C /* WidgetKit.framework */; };
+		B209E8CB2F55BB34002366A5 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F36CDF2E979DC000E7763C /* SwiftUI.framework */; };
+		B209E8D62F55BB35002366A5 /* iOS Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B209E8C92F55BB33002366A5 /* iOS Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B23F3FED2F48E281002BD399 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23F3FEC2F48E281002BD399 /* StoreKit.framework */; };
+		B2450F7A2F5250FA00EA8DFD /* watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B240E6A82E7BE27600D2B6ED /* watchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B26D41D92F57406200CDA44E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F36CDD2E979DC000E7763C /* WidgetKit.framework */; };
+		B26D41DA2F57406200CDA44E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F36CDF2E979DC000E7763C /* SwiftUI.framework */; };
+		B26D41E52F57406300CDA44E /* watchOS Widgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B26D41D82F57406200CDA44E /* watchOS Widgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B209E8D42F55BB35002366A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B240E6932E7BE27500D2B6ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B209E8C82F55BB33002366A5;
+			remoteInfo = TimeToLiveExtension;
+		};
+		B2450F7B2F5250FA00EA8DFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B240E6932E7BE27500D2B6ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B240E6A72E7BE27600D2B6ED;
+			remoteInfo = "Awaken Watch App";
+		};
+		B26D41E32F57406300CDA44E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B240E6932E7BE27500D2B6ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B26D41D72F57406200CDA44E;
+			remoteInfo = UltraExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B209E8DB2F55BB35002366A5 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B209E8D62F55BB35002366A5 /* iOS Widgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2450F7D2F5250FA00EA8DFD /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B2450F7A2F5250FA00EA8DFD /* watchOS.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2F36CEC2E979DC100E7763C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B26D41E52F57406300CDA44E /* watchOS Widgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B209E8C92F55BB33002366A5 /* iOS Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "iOS Widgets.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B23F3FEC2F48E281002BD399 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.2.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		B240E69B2E7BE27500D2B6ED /* iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B240E6A82E7BE27600D2B6ED /* watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26D41D82F57406200CDA44E /* watchOS Widgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watchOS Widgets.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2F36CDD2E979DC000E7763C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B2F36CDF2E979DC000E7763C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4E0491162FAB845D0041C367 /* Exceptions for "iOS" folder in "watchOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Service/Network/Network.swift,
+			);
+			target = B240E6A72E7BE27600D2B6ED /* watchOS */;
+		};
+		4EC54B902FA36F73000D5157 /* Exceptions for "iOS" folder in "iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resource/Info.plist,
+				Widget/Activity/CountdownLiveActivity.swift,
+				Widget/Activity/CountdownLiveActivityButton.swift,
+				Widget/Activity/CountdownLiveActivityProgressView.swift,
+				Widget/Activity/CountdownLiveActivityText.swift,
+				Widget/Activity/CountdownLiveActivityView.swift,
+				Widget/Activity/Intent/PauseIntent.swift,
+				Widget/Activity/Intent/ResumeIntent.swift,
+				Widget/Complication/AlarmTimeWidget.swift,
+				Widget/Complication/AlarmTimeWidgetProvider.swift,
+				Widget/Resource/Assets.xcassets,
+				Widget/Resource/Info.plist,
+				Widget/WidgetsBundle.swift,
+			);
+			target = B240E69A2E7BE27500D2B6ED /* iOS */;
+		};
+		4EC54B912FA36F7C000D5157 /* Exceptions for "watchOS" folder in "watchOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resource/Info.plist,
+				Widget/AlarmTimeWidget.swift,
+				Widget/Resource/Assets.xcassets,
+				Widget/Resource/Info.plist,
+				Widget/WidgetsBundle.swift,
+			);
+			target = B240E6A72E7BE27600D2B6ED /* watchOS */;
+		};
+		4EC54BBF2FA37158000D5157 /* Exceptions for "iOS" folder in "iOS Widgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Model/AlarmIdentifiers.swift,
+				Model/CountdownLiveActivityMetadata.swift,
+				Widget/Activity/CountdownLiveActivity.swift,
+				Widget/Activity/CountdownLiveActivityButton.swift,
+				Widget/Activity/CountdownLiveActivityProgressView.swift,
+				Widget/Activity/CountdownLiveActivityText.swift,
+				Widget/Activity/CountdownLiveActivityView.swift,
+				Widget/Activity/Intent/PauseIntent.swift,
+				Widget/Activity/Intent/ResumeIntent.swift,
+				Widget/Activity/Intent/StopIntent.swift,
+				Widget/Complication/AlarmTimeWidget.swift,
+				Widget/Complication/AlarmTimeWidgetProvider.swift,
+				Widget/Resource/Assets.xcassets,
+				Widget/WidgetsBundle.swift,
+			);
+			target = B209E8C82F55BB33002366A5 /* iOS Widgets */;
+		};
+		4EC54BCC2FA371AA000D5157 /* Exceptions for "watchOS" folder in "watchOS Widgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Widget/AlarmTimeWidget.swift,
+				Widget/AlarmTimeWidgetDefaults.swift,
+				Widget/AlarmTimeWidgetProvider.swift,
+				Widget/Resource/Assets.xcassets,
+				Widget/WidgetsBundle.swift,
+			);
+			target = B26D41D72F57406200CDA44E /* watchOS Widgets */;
+		};
+		4EC54BCD2FA371EB000D5157 /* Exceptions for "Shared" folder in "iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resource/CODE_STYLE.md,
+			);
+			target = B240E69A2E7BE27500D2B6ED /* iOS */;
+		};
+		4EC54BCE2FA371EB000D5157 /* Exceptions for "Shared" folder in "watchOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resource/CODE_STYLE.md,
+			);
+			target = B240E6A72E7BE27600D2B6ED /* watchOS */;
+		};
+		4EFE0EDF2F73C6B900C44383 /* Exceptions for "watchOS" folder in "iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				View/DatePicker/DateLabel.swift,
+			);
+			target = B240E69A2E7BE27500D2B6ED /* iOS */;
+		};
+		B23129212F57A02F00F0B9E4 /* Exceptions for "Shared" folder in "watchOS Widgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extension/Font+Mono.swift",
+				Model/AlarmEntry.swift,
+				Resource/AppColors.swift,
+				Resource/AppFont.swift,
+				View/Alarm/AlarmComplication.swift,
+			);
+			target = B26D41D72F57406200CDA44E /* watchOS Widgets */;
+		};
+		B281B80C2F5980BC000FCC7C /* Exceptions for "Shared" folder in "iOS Widgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Extension/Font+Mono.swift",
+				Model/AlarmEntry.swift,
+				Resource/AppColors.swift,
+				Resource/AppFont.swift,
+				View/Alarm/AlarmComplication.swift,
+			);
+			target = B209E8C82F55BB33002366A5 /* iOS Widgets */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B240E69D2E7BE27500D2B6ED /* iOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4EC54B902FA36F73000D5157 /* Exceptions for "iOS" folder in "iOS" target */,
+				4E0491162FAB845D0041C367 /* Exceptions for "iOS" folder in "watchOS" target */,
+				4EC54BBF2FA37158000D5157 /* Exceptions for "iOS" folder in "iOS Widgets" target */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		B240E6AC2E7BE27600D2B6ED /* watchOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4EFE0EDF2F73C6B900C44383 /* Exceptions for "watchOS" folder in "iOS" target */,
+				4EC54B912FA36F7C000D5157 /* Exceptions for "watchOS" folder in "watchOS" target */,
+				4EC54BCC2FA371AA000D5157 /* Exceptions for "watchOS" folder in "watchOS Widgets" target */,
+			);
+			path = watchOS;
+			sourceTree = "<group>";
+		};
+		B2ED385E2E7BFD7500612569 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4EC54BCD2FA371EB000D5157 /* Exceptions for "Shared" folder in "iOS" target */,
+				4EC54BCE2FA371EB000D5157 /* Exceptions for "Shared" folder in "watchOS" target */,
+				B281B80C2F5980BC000FCC7C /* Exceptions for "Shared" folder in "iOS Widgets" target */,
+				B23129212F57A02F00F0B9E4 /* Exceptions for "Shared" folder in "watchOS Widgets" target */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B209E8C62F55BB33002366A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B209E8CB2F55BB34002366A5 /* SwiftUI.framework in Frameworks */,
+				B209E8CA2F55BB34002366A5 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B240E6982E7BE27500D2B6ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B23F3FED2F48E281002BD399 /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B240E6A52E7BE27600D2B6ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26D41D52F57406200CDA44E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B26D41DA2F57406200CDA44E /* SwiftUI.framework in Frameworks */,
+				B26D41D92F57406200CDA44E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B240E6922E7BE27500D2B6ED = {
+			isa = PBXGroup;
+			children = (
+				B240E69D2E7BE27500D2B6ED /* iOS */,
+				B2ED385E2E7BFD7500612569 /* Shared */,
+				B240E6AC2E7BE27600D2B6ED /* watchOS */,
+				B2F36CDC2E979DC000E7763C /* Frameworks */,
+				B240E69C2E7BE27500D2B6ED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B240E69C2E7BE27500D2B6ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B240E69B2E7BE27500D2B6ED /* iOS.app */,
+				B240E6A82E7BE27600D2B6ED /* watchOS.app */,
+				B209E8C92F55BB33002366A5 /* iOS Widgets.appex */,
+				B26D41D82F57406200CDA44E /* watchOS Widgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B2F36CDC2E979DC000E7763C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B23F3FEC2F48E281002BD399 /* StoreKit.framework */,
+				B2F36CDD2E979DC000E7763C /* WidgetKit.framework */,
+				B2F36CDF2E979DC000E7763C /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B209E8C82F55BB33002366A5 /* iOS Widgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B209E8D72F55BB35002366A5 /* Build configuration list for PBXNativeTarget "iOS Widgets" */;
+			buildPhases = (
+				B209E8C52F55BB33002366A5 /* Sources */,
+				B209E8C62F55BB33002366A5 /* Frameworks */,
+				B209E8C72F55BB33002366A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS Widgets";
+			packageProductDependencies = (
+			);
+			productName = TimeToLiveExtension;
+			productReference = B209E8C92F55BB33002366A5 /* iOS Widgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B240E69A2E7BE27500D2B6ED /* iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B240E6B92E7BE27700D2B6ED /* Build configuration list for PBXNativeTarget "iOS" */;
+			buildPhases = (
+				B240E6972E7BE27500D2B6ED /* Sources */,
+				B240E6982E7BE27500D2B6ED /* Frameworks */,
+				B240E6992E7BE27500D2B6ED /* Resources */,
+				B2450F7D2F5250FA00EA8DFD /* Embed Watch Content */,
+				B209E8DB2F55BB35002366A5 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2450F7C2F5250FA00EA8DFD /* PBXTargetDependency */,
+				B209E8D52F55BB35002366A5 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B240E69D2E7BE27500D2B6ED /* iOS */,
+				B2ED385E2E7BFD7500612569 /* Shared */,
+			);
+			name = iOS;
+			packageProductDependencies = (
+			);
+			productName = AwakeFlow;
+			productReference = B240E69B2E7BE27500D2B6ED /* iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B240E6A72E7BE27600D2B6ED /* watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B240E6B52E7BE27700D2B6ED /* Build configuration list for PBXNativeTarget "watchOS" */;
+			buildPhases = (
+				B240E6A42E7BE27600D2B6ED /* Sources */,
+				B240E6A52E7BE27600D2B6ED /* Frameworks */,
+				B240E6A62E7BE27600D2B6ED /* Resources */,
+				B2F36CEC2E979DC100E7763C /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B26D41E42F57406300CDA44E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B240E6AC2E7BE27600D2B6ED /* watchOS */,
+				B2ED385E2E7BFD7500612569 /* Shared */,
+			);
+			name = watchOS;
+			packageProductDependencies = (
+			);
+			productName = "AwakeFlow Watch App";
+			productReference = B240E6A82E7BE27600D2B6ED /* watchOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B26D41D72F57406200CDA44E /* watchOS Widgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B26D41E82F57406300CDA44E /* Build configuration list for PBXNativeTarget "watchOS Widgets" */;
+			buildPhases = (
+				B26D41D42F57406200CDA44E /* Sources */,
+				B26D41D52F57406200CDA44E /* Frameworks */,
+				B26D41D62F57406200CDA44E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "watchOS Widgets";
+			packageProductDependencies = (
+			);
+			productName = UltraExtension;
+			productReference = B26D41D82F57406200CDA44E /* watchOS Widgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B240E6932E7BE27500D2B6ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2650;
+				TargetAttributes = {
+					B209E8C82F55BB33002366A5 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					B240E69A2E7BE27500D2B6ED = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					B240E6A72E7BE27600D2B6ED = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					B26D41D72F57406200CDA44E = {
+						CreatedOnToolsVersion = 26.2;
+					};
+				};
+			};
+			buildConfigurationList = B240E6962E7BE27500D2B6ED /* Build configuration list for PBXProject "Awaken" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				uk,
+				ru,
+			);
+			mainGroup = B240E6922E7BE27500D2B6ED;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B240E69C2E7BE27500D2B6ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B240E69A2E7BE27500D2B6ED /* iOS */,
+				B240E6A72E7BE27600D2B6ED /* watchOS */,
+				B209E8C82F55BB33002366A5 /* iOS Widgets */,
+				B26D41D72F57406200CDA44E /* watchOS Widgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B209E8C72F55BB33002366A5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B240E6992E7BE27500D2B6ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B240E6A62E7BE27600D2B6ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26D41D62F57406200CDA44E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B209E8C52F55BB33002366A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B240E6972E7BE27500D2B6ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B240E6A42E7BE27600D2B6ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26D41D42F57406200CDA44E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B209E8D52F55BB35002366A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B209E8C82F55BB33002366A5 /* iOS Widgets */;
+			targetProxy = B209E8D42F55BB35002366A5 /* PBXContainerItemProxy */;
+		};
+		B2450F7C2F5250FA00EA8DFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B240E6A72E7BE27600D2B6ED /* watchOS */;
+			targetProxy = B2450F7B2F5250FA00EA8DFD /* PBXContainerItemProxy */;
+		};
+		B26D41E42F57406300CDA44E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B26D41D72F57406200CDA44E /* watchOS Widgets */;
+			targetProxy = B26D41E32F57406300CDA44E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B209E8D82F55BB35002366A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iOS/Widget/Resource/Entitlements.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 55;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOS/Widget/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Time;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 10.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		B209E8D92F55BB35002366A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = iOS/Widget/Resource/Entitlements.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 55;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOS/Widget/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Time;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 10.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+		B240E6B32E7BE27700D2B6ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B240E6B42E7BE27700D2B6ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		B240E6B62E7BE27700D2B6ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = watchOS/Resource/Entitlements.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 55;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = watchOS/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Awaken;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Access heart rate for intelligent wake and sleep stages for machine learning personalization";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Access heart rate for intelligent wake and sleep stages for machine learning personalization";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record dream audio";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = andrii.ponomarov.AwakeFlow;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 10.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		B240E6B72E7BE27700D2B6ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = watchOS/Resource/Entitlements.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 55;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = watchOS/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Awaken;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Access heart rate for intelligent wake and sleep stages for machine learning personalization";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Access heart rate for intelligent wake and sleep stages for machine learning personalization";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record dream audio";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = andrii.ponomarov.AwakeFlow;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 10.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+		B240E6BA2E7BE27700D2B6ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iOS/Resource/Entitlements.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 55;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOS/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Awaken;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record dream audio";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 10.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B240E6BB2E7BE27700D2B6ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iOS/Resource/Entitlements.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 55;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iOS/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Awaken;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record dream audio";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 10.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B26D41E62F57406300CDA44E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = watchOS/Widget/Resource/Entitlements.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 55;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = watchOS/Widget/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Time;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 10.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		B26D41E72F57406300CDA44E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = watchOS/Widget/Resource/Entitlements.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 55;
+				DEVELOPMENT_TEAM = 67CSC8R9LU;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = watchOS/Widget/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Time;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 10.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B209E8D72F55BB35002366A5 /* Build configuration list for PBXNativeTarget "iOS Widgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B209E8D82F55BB35002366A5 /* Debug */,
+				B209E8D92F55BB35002366A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B240E6962E7BE27500D2B6ED /* Build configuration list for PBXProject "Awaken" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B240E6B32E7BE27700D2B6ED /* Debug */,
+				B240E6B42E7BE27700D2B6ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B240E6B52E7BE27700D2B6ED /* Build configuration list for PBXNativeTarget "watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B240E6B62E7BE27700D2B6ED /* Debug */,
+				B240E6B72E7BE27700D2B6ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B240E6B92E7BE27700D2B6ED /* Build configuration list for PBXNativeTarget "iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B240E6BA2E7BE27700D2B6ED /* Debug */,
+				B240E6BB2E7BE27700D2B6ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B26D41E82F57406300CDA44E /* Build configuration list for PBXNativeTarget "watchOS Widgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B26D41E62F57406300CDA44E /* Debug */,
+				B26D41E72F57406300CDA44E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B240E6932E7BE27500D2B6ED /* Project object */;
+}
