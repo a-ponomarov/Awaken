@@ -95,14 +95,14 @@ struct CountdownButtons: View {
         CountdownLiveActivityButton(
           configuration: attributes.presentation.countdown?.pauseButton,
           intent: PauseIntent(alarmID: state.alarmID.uuidString),
-          tint: AppColors.tint,
+          tint: AppColors.accent,
           sizeStyle: buttonSizeStyle
         )
       case .paused:
         CountdownLiveActivityButton(
           configuration: attributes.presentation.paused?.resumeButton,
           intent: ResumeIntent(alarmID: state.alarmID.uuidString),
-          tint: AppColors.tint,
+          tint: AppColors.accent,
           sizeStyle: buttonSizeStyle
         )
       default:
@@ -116,7 +116,7 @@ struct CountdownButtons: View {
           systemImageName: "stop.fill"
         ),
         intent: StopIntent(alarmID: state.alarmID.uuidString),
-        tint: AppColors.red,
+        tint: AppColors.accent,
         sizeStyle: buttonSizeStyle
       )
     }
@@ -132,7 +132,7 @@ struct CountdownTaskText: View {
   var body: some View {
     Text(taskName)
       .font(AppFont.bodyMedium)
-      .foregroundStyle(AppColors.textPrimary)
+      .foregroundStyle(AppColors.primary)
       .frame(maxWidth: .infinity, alignment: .leading)
   }
 

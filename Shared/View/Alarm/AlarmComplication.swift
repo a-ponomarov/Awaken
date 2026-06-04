@@ -34,7 +34,7 @@ struct AlarmComplication: View {
       } else {
         Text(Constants.placeholderTime)
           .font(.light(size: Constants.timeFontSize))
-          .foregroundStyle(AppColors.textTertiary)
+          .foregroundStyle(AppColors.tertiary)
       }
     }
   }

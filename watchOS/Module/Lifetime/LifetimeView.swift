@@ -30,7 +30,7 @@ struct LifetimeView: View {
 
   var body: some View {
     ZStack {
-      ThemeGradient().ignoresSafeArea()
+      AppColors.background.ignoresSafeArea()
       if birthday != nil {
         LifetimeContentView(
           birthday: birthdayBinding,

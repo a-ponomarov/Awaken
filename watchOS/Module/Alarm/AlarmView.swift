@@ -31,7 +31,7 @@ struct AlarmView: View {
         Text(session.expireDate.time)
           .font(.bold(size: 33))
           .minimumScaleFactor(0.5)
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
       }
       .buttonStyle(.plain)
 

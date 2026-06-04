@@ -33,7 +33,7 @@ struct WakeStagePickerView: View {
       }
       .padding(.horizontal, AppLayout.cardPadding)
     }
-    .background(AppColors.blue.ignoresSafeArea())
+    .background(AppColors.background.ignoresSafeArea())
     .task {
       selectedOption = session.wakeStage
     }
@@ -50,10 +50,10 @@ private struct WakeStageRow: View {
     HStack {
       VStack {
         Text(option.leadingText)
-          .foregroundStyle(AppColors.tint)
+          .foregroundStyle(AppColors.primary)
           .frame(maxWidth: .infinity, alignment: .leading)
         Text(option.trailingText)
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
           .minimumScaleFactor(0.5)
           .frame(maxWidth: .infinity, alignment: .leading)
       }
@@ -64,7 +64,7 @@ private struct WakeStageRow: View {
       if isSelected {
         Image(systemName: "checkmark.circle")
           .font(AppFont.title)
-          .foregroundStyle(AppColors.tint)
+          .foregroundStyle(AppColors.primary)
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)

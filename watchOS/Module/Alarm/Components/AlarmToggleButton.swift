@@ -22,7 +22,7 @@ struct AlarmToggleButton: View {
     Button(action: action) {
       Image(systemName: isPlanned ? "stop.fill" : "play.fill")
         .font(.light(size: Constants.actionIconFontSize))
-        .foregroundStyle(AppColors.textPrimary)
+        .foregroundStyle(AppColors.primary)
     }
     .buttonStyle(.plain)
     .frame(maxHeight: .infinity)

@@ -33,7 +33,7 @@ struct LogRow: View {
           .overlay {
             Capsule()
               .stroke(
-                AppColors.tint,
+                AppColors.accent,
                 lineWidth: AppLayout.stroke
               )
           }
@@ -51,7 +51,7 @@ struct LogRow: View {
     .padding(AppLayout.cardPadding)
     .cardStyle(cornerRadius: AppLayout.cardRadius)
     .font(.light(size: Constants.metadataFontSize))
-    .foregroundStyle(AppColors.textPrimary)
+    .foregroundStyle(AppColors.primary)
   }
 
 }

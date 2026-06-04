@@ -40,7 +40,7 @@ struct TimeView: View {
     @Bindable var timeService = timeService
 
     ZStack {
-      ThemeGradient().ignoresSafeArea()
+      AppColors.background.ignoresSafeArea()
       List {
         TimePanelView(
           timeService: timeService,
@@ -70,7 +70,7 @@ struct TimeView: View {
           } header: {
             Text(section.title.uppercased() + " " + section.totalDurationText)
               .font(AppFont.subtitle).bold()
-              .foregroundStyle(AppColors.textPrimary)
+              .foregroundStyle(AppColors.primary)
               .frame(maxWidth: .infinity, alignment: .center)
               .padding(.top, AppLayout.spacing)
           }
@@ -82,7 +82,7 @@ struct TimeView: View {
       .scrollContentBackground(.hidden)
       .scrollIndicators(.hidden)
     }
-    .foregroundStyle(AppColors.textPrimary)
+    .foregroundStyle(AppColors.primary)
     .navigationBarTitleDisplayMode(.inline)
     .alert(Text(verbatim: ""), isPresented: $timeService.showPermissionAlert) {
       Button(String.settings) {
@@ -263,7 +263,7 @@ private struct HistoryLabelSheet: View {
         isTextFieldFocused = true
       }
     }
-    .background(AppColors.blue.ignoresSafeArea())
+    .background(AppColors.background.ignoresSafeArea())
   }
 
 }

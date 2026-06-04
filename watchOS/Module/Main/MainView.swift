@@ -39,7 +39,7 @@ struct MainView: View {
         .modelContainer(.log)
         .tag(Tab.log)
     }
-    .background(ThemeGradient())
+    .background(AppColors.background)
     .sheet(item: $coordinator.sheet) { destination in
       switch destination {
       case .alarmTimePicker(let initialTime):

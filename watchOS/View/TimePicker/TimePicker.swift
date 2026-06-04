@@ -30,7 +30,7 @@ struct TimePicker: View {
 
     GeometryReader { geometry in
       ZStack {
-        ThemeGradient().ignoresSafeArea()
+        AppColors.background.ignoresSafeArea()
         ClockView(
           hour: model.hour,
           minute: model.minute,

@@ -24,7 +24,7 @@ struct LifetimeCurrentSecondsView: View {
     VStack(spacing: Constants.currentSecondsSpacing) {
       Text(String.secondsLived)
         .font(.bold(size: Constants.currentSecondsLabelFontSize))
-        .foregroundStyle(AppColors.textPrimary)
+        .foregroundStyle(AppColors.primary)
 
       Text(value.decimal)
         .font(.light(size: Constants.currentSecondsValueFontSize))

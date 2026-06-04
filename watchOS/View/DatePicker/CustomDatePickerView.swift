@@ -25,7 +25,7 @@ struct CustomDatePickerView: View {
 
   var body: some View {
     ZStack {
-      ThemeGradient()
+      AppColors.background
         .ignoresSafeArea()
 
       VStack(spacing: AppLayout.vInset) {
@@ -48,7 +48,7 @@ struct CustomDatePickerView: View {
     }
     .sheet(isPresented: $showNativeDatePicker) {
       ZStack {
-        ThemeGradient().ignoresSafeArea()
+        AppColors.background.ignoresSafeArea()
         DatePicker(String.date, selection: $dateInPicker, displayedComponents: .date)
           .labelsHidden()
           .tint(.white)
@@ -102,7 +102,7 @@ struct CustomDatePickerView: View {
       VStack(spacing: Constants.cellSpacing) {
         Text(label)
           .font(.bold(size: Constants.cellLabelFontSize))
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
 
         Text(value)
           .font(.light(size: Constants.cellValueFontSize))

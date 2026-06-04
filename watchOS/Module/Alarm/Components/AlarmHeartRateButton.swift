@@ -24,9 +24,9 @@ struct AlarmHeartRateButton: View {
       ZStack {
         Image(systemName: "heart.fill")
           .offset(y: 1)
-          .foregroundStyle(AppColors.red)
+          .foregroundStyle(AppColors.accent)
           .font(.bold(size: Constants.heartIconFontSize))
-          .shadow(color: AppColors.red, radius: 1)
+          .shadow(color: AppColors.accent, radius: 1)
 
         if let heartRate {
           Text(Int(heartRate), format: .number)

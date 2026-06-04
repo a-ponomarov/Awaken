@@ -33,7 +33,7 @@ struct LifetimeBirthdayButton: View {
         .background(Capsule().fill(AppColors.surface))
         .overlay {
           Capsule()
-            .stroke(AppColors.tint, lineWidth: AppLayout.stroke)
+            .stroke(AppColors.accent, lineWidth: AppLayout.stroke)
         }
       
     }

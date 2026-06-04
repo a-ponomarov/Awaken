@@ -23,7 +23,7 @@ struct AlarmPlayStopButton: View {
       Image(systemName: viewModel.isAlarmActive ? "stop.fill" : "play.fill")
         .contentTransition(.symbolEffect(.replace))
         .font(.bold(size: Constants.playButtonIconFontSize))
-        .foregroundStyle(AppColors.textPrimary)
+        .foregroundStyle(AppColors.primary)
         .frame(height: Constants.playButtonHeight)
     }
     .buttonStyle(.plain)

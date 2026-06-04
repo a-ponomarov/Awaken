@@ -30,12 +30,12 @@ struct AlarmWakeUpTimeCell: View {
       VStack(spacing: 2) {
         Text(date.formatted(date: .omitted, time: .shortened))
           .font(AppFont.bodyMedium)
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
           .minimumScaleFactor(Constants.wakeTimeMinimumScale)
           .lineLimit(1)
         Text(viewModel.cyclesText(for: date))
           .font(AppFont.caption)
-          .foregroundStyle(AppColors.textSecondary)
+          .foregroundStyle(AppColors.secondary)
           .minimumScaleFactor(Constants.cycleTextMinimumScale)
           .lineLimit(1)
       }

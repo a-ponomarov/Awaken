@@ -50,8 +50,8 @@ struct SettingsView: View {
       .navigationTitle(String.settingsTitle)
       .navigationBarTitleDisplayMode(.inline)
       .scrollContentBackground(.hidden)
-      .background(AppColors.blue)
-      .foregroundStyle(AppColors.textPrimary)
+      .background(AppColors.background)
+      .foregroundStyle(AppColors.primary)
       .toolbar {
         ToolbarItem(placement: .topBarTrailing) {
           Button(String.done) {
@@ -74,17 +74,17 @@ struct SettingsView: View {
         }
       }
       .font(.body.weight(.semibold))
-      .foregroundStyle(AppColors.tint)
+      .foregroundStyle(AppColors.primary)
       .frame(width: 28, height: 28)
 
       VStack(alignment: .leading, spacing: AppLayout.spacing) {
         Text(title)
           .font(AppFont.bodyMedium)
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
 
         Text(subtitle)
           .font(AppFont.caption)
-          .foregroundStyle(AppColors.textSecondary)
+          .foregroundStyle(AppColors.secondary)
           .lineLimit(1)
           .truncationMode(.middle)
       }
@@ -93,7 +93,7 @@ struct SettingsView: View {
 
       Image(systemName: "arrow.up.right")
         .font(.footnote.weight(.semibold))
-        .foregroundStyle(AppColors.textSecondary)
+        .foregroundStyle(AppColors.secondary)
     }
     .padding(.vertical, AppLayout.spacing)
   }

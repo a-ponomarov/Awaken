@@ -17,7 +17,7 @@ extension View {
       .clipShape(RoundedRectangle(cornerRadius: cornerRadius, style: .continuous))
       .overlay {
         RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-          .stroke(AppColors.tint, lineWidth: AppLayout.stroke)
+          .stroke(AppColors.accent, lineWidth: AppLayout.stroke)
       }
   }
 

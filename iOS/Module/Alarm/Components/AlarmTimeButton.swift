@@ -26,7 +26,7 @@ struct AlarmTimeButton: View {
       Text(viewModel.selectedTime.time)
         .font(AppFont.displayLarge)
         .minimumScaleFactor(Constants.timeMinimumScale)
-        .foregroundStyle(AppColors.textPrimary)
+        .foregroundStyle(AppColors.primary)
         .id(viewModel.selectedTime.time)
         .transition(.opacity.combined(with: .scale(scale: 0.98)))
     }

@@ -28,7 +28,7 @@ struct DurationSliderSheet: View {
           in: minimumMinutes ... maximumMinutes,
           step: 1
         ) { }
-          .tint(AppColors.red)
+          .tint(AppColors.primary)
         .labelsHidden()
 
         Slider(
@@ -39,7 +39,7 @@ struct DurationSliderSheet: View {
           in: Double(minimumMinutes) ... Double(maximumMinutes),
           step: 1
         )
-        .tint(AppColors.red)
+        .tint(AppColors.primary)
 
         HStack {
           Text(String.minutesShort(minimumMinutes))
@@ -65,7 +65,7 @@ struct DurationSliderSheet: View {
         }
       }
     }
-    .background(AppColors.blue.ignoresSafeArea())
+    .background(AppColors.background.ignoresSafeArea())
   }
 
 }

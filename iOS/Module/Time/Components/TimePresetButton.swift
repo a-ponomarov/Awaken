@@ -57,7 +57,7 @@ struct TimePresetButton: View {
         }
       }
       .font(AppFont.buttonSmall)
-      .foregroundStyle(isSelected ? AppColors.blue : AppColors.textPrimary)
+      .foregroundStyle(isSelected ? AppColors.background : AppColors.primary)
       .frame(maxWidth: .infinity)
       .frame(height: Constants.presetHeight)
       .background(
@@ -67,7 +67,7 @@ struct TimePresetButton: View {
       .overlay {
         Capsule()
           .stroke(
-            isSelected ? Color.clear : AppColors.tint,
+            isSelected ? Color.clear : AppColors.accent,
             lineWidth: AppLayout.stroke
           )
       }

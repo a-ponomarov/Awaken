@@ -35,7 +35,7 @@ struct AlarmWakeStageLink: View {
         }
         .overlay {
           Capsule()
-            .stroke(AppColors.tint, lineWidth: AppLayout.stroke)
+            .stroke(AppColors.accent, lineWidth: AppLayout.stroke)
         }
     }
     .buttonStyle(.plain)

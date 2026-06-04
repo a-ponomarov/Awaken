@@ -43,7 +43,7 @@ struct MainView: View {
         }
       }
     }
-    .tint(AppColors.tint)
+    .tint(AppColors.primary)
     .onChange(of: scenePhase) { _, phase in
       guard phase == .active else { return }
       alarmService.refresh()

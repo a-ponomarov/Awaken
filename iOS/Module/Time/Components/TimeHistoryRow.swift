@@ -18,19 +18,19 @@ struct TimeHistoryRow: View {
         VStack(alignment: .leading, spacing: 6) {
           Text(timeRecord.timeHistoryTitleText)
             .font(AppFont.bodyMedium)
-            .foregroundStyle(AppColors.textPrimary)
+            .foregroundStyle(AppColors.primary)
             .fixedSize(horizontal: false, vertical: true)
 
           Text(timeRecord.timeHistoryRangeText)
             .font(AppFont.caption)
-            .foregroundStyle(AppColors.textSecondary)
+            .foregroundStyle(AppColors.secondary)
         }
 
         Spacer(minLength: AppLayout.spacing * 3)
 
         Text(timeRecord.duration.timeHistoryDurationText)
           .font(AppFont.body)
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
       }
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding(AppLayout.cardPadding)

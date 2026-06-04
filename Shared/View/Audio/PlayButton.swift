@@ -19,7 +19,7 @@ struct PlayButton: View {
         CircleProgressView(progress: $progress)
         Image(systemName: isPlaying ? "pause.fill" : "play.fill")
           .font(AppFont.captionMedium)
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
       }
       .frame(height: 36.0)
     }

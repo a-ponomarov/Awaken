@@ -50,19 +50,18 @@ struct SubscriptionView: View {
         store.enableTemporaryPaywallBypass()
       } label: {
         HStack(spacing: AppLayout.spacing * 2) {
-          Text("White Door", comment: "Label of the button that lets the user skip the paywall and continue using the app")
           Image(systemName: "door.french.open")
             .font(.system(size: Constants.skipButtonIconFontSize, weight: .semibold))
         }
         .font(AppFont.buttonSmall)
-        .foregroundStyle(AppColors.textPrimary)
+        .foregroundStyle(AppColors.primary)
         .padding(.horizontal, AppLayout.spacing * 4)
         .padding(.vertical, AppLayout.spacing * 2)
         .background(AppColors.surface)
         .clipShape(Capsule())
         .overlay {
           Capsule()
-            .stroke(AppColors.tint, lineWidth: AppLayout.stroke)
+            .stroke(AppColors.accent, lineWidth: AppLayout.stroke)
         }
       }
       .buttonStyle(.plain)
@@ -106,16 +105,16 @@ struct SubscriptionView: View {
       ZStack {
         Image(systemName: "wifi")
           .font(.system(size: Constants.wifiIconFontSize))
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
         Image(systemName: "wifi")
           .font(.system(size: Constants.wifiIconFontSize))
-          .foregroundStyle(AppColors.tint)
+          .foregroundStyle(AppColors.accent)
           .symbolEffect(.variableColor.iterative, options: .repeating, isActive: true)
       }
       Text(String.waitingForNetwork)
         .font(AppFont.subtitle)
         .bold()
-        .foregroundStyle(AppColors.textPrimary)
+        .foregroundStyle(AppColors.primary)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
   }

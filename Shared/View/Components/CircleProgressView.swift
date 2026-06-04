@@ -21,11 +21,11 @@ struct CircleProgressView: View {
   var body: some View {
     ZStack {
       Circle()
-        .stroke(.white, lineWidth: Constants.lineWidth)
+        .stroke(AppColors.primary, lineWidth: Constants.lineWidth)
       Circle()
         .trim(from: 0.0, to: progress)
         .stroke(
-          AppColors.red,
+          AppColors.accent,
           style: StrokeStyle(lineWidth: Constants.lineWidth, lineCap: .round)
         )
         .rotationEffect(.degrees(Constants.degreesOffset))

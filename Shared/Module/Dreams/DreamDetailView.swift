@@ -18,7 +18,7 @@ struct DreamDetailView: View {
   var body: some View {
     NavigationStack {
       ZStack {
-        ThemeGradient()
+        AppColors.background.ignoresSafeArea()
         DreamRow(dream: dream, showsDetails: true, audioPlayer: audioPlayer)
           .padding(.horizontal, AppLayout.cardPadding)
       }

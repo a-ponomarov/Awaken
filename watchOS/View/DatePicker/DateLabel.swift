@@ -15,12 +15,12 @@ struct DateLabel: View {
     VStack(alignment: .leading) {
       Text(date, style: .date)
         .font(AppFont.subtitle)
-        .foregroundStyle(AppColors.textPrimary)
+        .foregroundStyle(AppColors.primary)
         .lineLimit(1)
         .minimumScaleFactor(0.5)
       Text(date, style: .time)
         .font(AppFont.caption)
-        .foregroundStyle(AppColors.textSecondary)
+        .foregroundStyle(AppColors.secondary)
         .lineLimit(1)
         .minimumScaleFactor(0.5)
     }

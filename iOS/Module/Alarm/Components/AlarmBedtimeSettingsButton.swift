@@ -28,10 +28,10 @@ struct AlarmBedtimeSettingsButton: View {
           Text(String.timeToFallAsleep)
         }
         Text(String.minutesShort(viewModel.fallAsleepBufferMinutes))
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
       }
       .font(AppFont.caption)
-      .foregroundStyle(AppColors.textPrimary)
+      .foregroundStyle(AppColors.primary)
       .frame(maxWidth: .infinity)
       .padding(.vertical, Constants.settingsVerticalPadding)
       .cardStyle()

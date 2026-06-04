@@ -1604,6 +1604,7 @@
     },
     "White Door" : {
       "comment" : "Label of the button that lets the user skip the paywall and continue using the app",
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

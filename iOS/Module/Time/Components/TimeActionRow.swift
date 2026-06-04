@@ -39,7 +39,7 @@ struct TimeActionRow: View {
             )
             .overlay {
               Circle()
-                .stroke(AppColors.tint, lineWidth: AppLayout.stroke)
+                .stroke(AppColors.accent, lineWidth: AppLayout.stroke)
             }
         }
         .buttonStyle(.plain)
@@ -50,7 +50,7 @@ struct TimeActionRow: View {
           .font(AppFont.button)
           .frame(maxWidth: .infinity)
           .frame(height: Constants.ctaHeight)
-          .foregroundStyle(AppColors.blue)
+          .foregroundStyle(AppColors.background)
           .background(
             Capsule()
               .fill(Color.white.opacity(0.94))

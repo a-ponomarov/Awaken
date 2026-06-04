@@ -16,7 +16,7 @@ struct AlarmRecommendationsView: View {
     VStack(spacing: AppLayout.vInset) {
       Text(String.bedtimeMessage)
         .font(AppFont.bodyMedium)
-        .foregroundStyle(AppColors.textPrimary)
+        .foregroundStyle(AppColors.primary)
 
       LazyVGrid(
         columns: [GridItem(.flexible()), GridItem(.flexible())],

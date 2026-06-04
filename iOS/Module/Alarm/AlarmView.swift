@@ -39,7 +39,7 @@ private struct AlarmViewContent: View {
 
   var body: some View {
     ZStack {
-      ThemeGradient().ignoresSafeArea()
+      AppColors.background.ignoresSafeArea()
       GeometryReader { proxy in
         ScrollView {
           VStack(spacing: Constants.contentSpacing) {

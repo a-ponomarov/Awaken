@@ -46,7 +46,7 @@ struct WaveformView: View {
 
   private func centerLine(in size: CGSize) -> some View {
     Rectangle()
-      .fill(AppColors.red)
+      .fill(AppColors.primary)
       .frame(width: Constants.centerLineWidth, height: Constants.height)
       .position(x: size.width / 2, y: Constants.height / 2)
   }
@@ -103,8 +103,8 @@ struct WaveformView: View {
     let barCenterX = CGFloat(index) * spacing
       + Constants.barWidth / 2
     return barCenterX <= progressX
-      ? AppColors.textPrimary
-      : AppColors.textTertiary
+      ? AppColors.primary
+      : AppColors.tertiary
   }
 
   private func calculatedOffset(in size: CGSize) -> CGFloat {

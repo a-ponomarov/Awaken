@@ -32,12 +32,12 @@ struct TimeTextField: View {
       TextField(
         "",
         text: $text,
-        prompt: Text(title).foregroundStyle(AppColors.textSecondary)
+        prompt: Text(title).foregroundStyle(AppColors.secondary)
       )
       .textInputAutocapitalization(autocapitalization)
       .autocorrectionDisabled()
       .font(AppFont.input)
-      .foregroundStyle(AppColors.textPrimary)
+      .foregroundStyle(AppColors.primary)
       .submitLabel(.done)
       .padding(.leading, Constants.leadingPadding)
       .padding(.trailing, Constants.textTrailingPadding)
@@ -50,7 +50,7 @@ struct TimeTextField: View {
         Button(action: onClear) {
           Image(systemName: "xmark.circle.fill")
             .font(.regular(size: Constants.clearButtonIconFontSize))
-            .foregroundStyle(AppColors.textSecondary)
+            .foregroundStyle(AppColors.secondary)
         }
         .buttonStyle(.plain)
         .padding(.trailing, Constants.clearButtonTrailingPadding)
@@ -64,7 +64,7 @@ struct TimeTextField: View {
     )
     .overlay {
       Capsule()
-        .stroke(AppColors.tint, lineWidth: AppLayout.stroke)
+        .stroke(AppColors.accent, lineWidth: AppLayout.stroke)
     }
   }
 

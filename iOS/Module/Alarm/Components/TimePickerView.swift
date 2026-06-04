@@ -56,7 +56,7 @@ struct TimePickerView: View {
     }
     .presentationDetents([.height(Constants.pickerHeight)])
     .presentationDragIndicator(.hidden)
-    .background(AppColors.blue.ignoresSafeArea())
+    .background(AppColors.background.ignoresSafeArea())
   }
 
 }

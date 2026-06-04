@@ -34,12 +34,12 @@ struct LifetimeMilestoneView: View {
         if isInfinity {
           Image(systemName: "star.fill")
             .font(.regular(size: Constants.milestoneIconFontSize))
-            .foregroundStyle(AppColors.textPrimary)
+            .foregroundStyle(AppColors.primary)
         }
 
         Text(title)
           .font(.bold(size: Constants.milestoneTitleFontSize))
-          .foregroundStyle(AppColors.textPrimary)
+          .foregroundStyle(AppColors.primary)
       }
 
       HStack(alignment: .lastTextBaseline, spacing: Constants.milestoneValueSpacing) {
@@ -64,7 +64,7 @@ struct LifetimeMilestoneView: View {
         systemImage: isReached ? "checkmark.circle" : "calendar"
       )
       .font(.light(size: Constants.milestoneDateFontSize))
-      .foregroundStyle(AppColors.textSecondary)
+      .foregroundStyle(AppColors.secondary)
       .lineLimit(1)
       .minimumScaleFactor(0.5)
     }

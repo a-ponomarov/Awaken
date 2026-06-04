@@ -48,7 +48,7 @@ private struct DreamsViewContent: View {
 
   var body: some View {
     ZStack {
-      ThemeGradient().ignoresSafeArea()
+      AppColors.background.ignoresSafeArea()
       DreamsList(
         dreams: dreams,
         onSelect: handleDreamSelection,
