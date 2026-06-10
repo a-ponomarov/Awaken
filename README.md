@@ -84,22 +84,15 @@ The trained model is bundled with the watchOS target:
 
 ```text
 Awaken/
-  watchOS/
-    Model/           Sleep-stage classifier and watch-only models
-    Module/          Alarm, log, lifetime, and main screens
-    Resource/        Assets, entitlements, and Info.plist
-    Service/
-      Classifier/    Model loading, feature extraction, prediction, and personalization
-      Coordinator/   Routes, sheets, alerts, and full-screen navigation
-      RawDataSource/ HealthKit and Core Motion sources
-      Session.swift  Sleep-session runtime
-    View/            Reusable watch controls and pickers
-    Widget/          Alarm complication, timeline provider, defaults, and widget bundle
-    AppContainer.swift
-    AwakenApp.swift
   iOS/
     Model/           Alarm identifiers and Live Activity metadata
-    Module/          Alarm, main tabs, settings, subscription, and time screens
+    Module/
+      Alarm/         Alarm setup, recommendations, and time controls
+      Main/          Root tab shell
+      Notes/         Text notes, audio note cards, note list, and note detail UI
+      Settings/      Support, source code, and privacy links
+      Subscription/  StoreKit paywall
+      Time/          Focus timer, duration controls, history, and task labels
     Resource/        Assets, entitlements, Info.plist, and StoreKit configuration
     Service/
       Alarm/         Wake alarm scheduling and observation
@@ -110,11 +103,26 @@ Awaken/
     Widget/          Live Activity, alarm complication, intents, resources, and widget bundle
     AppContainer.swift
     AwakenApp.swift
+  watchOS/
+    Model/           Watch-only models
+    Module/          Alarm, dreams, log, lifetime, and main screens
+    Resource/        Assets, entitlements, Info.plist, and ML model
+    Service/
+      Classifier/    Model loading, feature extraction, prediction, and personalization
+      Coordinator/   Routes, sheets, alerts, and full-screen navigation
+      RawDataSource/ HealthKit and Core Motion sources
+      Session.swift  Sleep-session runtime
+    View/            Reusable watch controls and pickers
+    Widget/          Alarm complication, timeline provider, defaults, and widget bundle
+    AppContainer.swift
+    AwakenApp.swift
   Shared/
     Extension/       Swift extensions used across targets
     Model/           SwiftData models and widget timeline entries
-    Module/          Dream views shared by app targets
     Resource/        Colors, fonts, strings, layout constants, and style guide
-    Service/         Audio, logging, persistence, tasks, and shared domain services
+    Service/
+      Audio/         Recording, playback, file storage, and waveform extraction
+      Persistence/   SwiftData containers, schema, repositories, and logger
+      Task/          Shared task helpers
     View/            Audio controls, shared progress views, and alarm complication UI
 ```

@@ -22,6 +22,9 @@ enum PersistenceError: Error {
   case fetchUserFailed
   case fetchFirstUserFailed
   case createUserFailed
+  case fetchDreamFailed
+  case fetchNoteFailed
+  case migrateDreamsToNotesFailed
 
 }
 
@@ -53,6 +56,21 @@ extension PersistenceError: LocalizedError {
       return String(localized: "Couldn't load your profiles.", comment: "Persistence error when fetching any user profile")
     case .createUserFailed:
       return String(localized: "Couldn't create the default profile.", comment: "Persistence error when creating the default user profile")
+    case .fetchDreamFailed:
+      return String(
+        localized: "Couldn't load the dream entry.",
+        comment: "Persistence error when fetching a dream record"
+      )
+    case .fetchNoteFailed:
+      return String(
+        localized: "Couldn't load the note.",
+        comment: "Persistence error when fetching a note"
+      )
+    case .migrateDreamsToNotesFailed:
+      return String(
+        localized: "Couldn't migrate dream recordings to notes.",
+        comment: "Persistence error when migrating existing dream recordings into notes"
+      )
     }
   }
 
@@ -62,11 +80,12 @@ extension PersistenceError: LocalizedError {
 /// domain-specific repository extensions.
 ///
 /// Domain operations live in dedicated files:
-/// - `Persistence+UserRepository`
-/// - `Persistence+TimeRepository`
-/// - `Persistence+SleepRepository`
-/// - `Persistence+DreamRepository`
-/// - `Persistence+SnapshotRepository`
+/// - `Persistence+User`
+/// - `Persistence+Time`
+/// - `Persistence+Sleep`
+/// - `Persistence+Dream`
+/// - `Persistence+Note`
+/// - `Persistence+Snapshot`
 actor Persistence: ModelActor {
   nonisolated let modelExecutor: any ModelExecutor
   nonisolated let modelContainer: ModelContainer

@@ -29,8 +29,8 @@ final class Coordinator {
     }
   }
 
-  func showDreamDetail(_ dream: Dream) {
-    fullScreenCover = .dreamDetail(dream)
+  func showNoteDetail(_ note: Note) {
+    fullScreenCover = .noteDetail(note)
   }
 
   func presentSettings() {

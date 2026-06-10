@@ -14,10 +14,19 @@ final class RecordButtonModel {
 
   var audioRecorder = AudioRecorder()
   var showPermissionAlert = false
-  private let persistence: Persistence
+  private let saveRecording: (UUID) async -> Void
 
-  init(persistence: Persistence) {
-    self.persistence = persistence
+  init(
+    persistence: Persistence,
+    saveRecording: ((Persistence, UUID) async -> Void)? = nil
+  ) {
+    self.saveRecording = { id in
+      if let saveRecording {
+        await saveRecording(persistence, id)
+      } else {
+        await persistence.saveDream(id: id)
+      }
+    }
   }
 
   var isRecording: Bool {
@@ -27,7 +36,7 @@ final class RecordButtonModel {
   func action() {
     if audioRecorder.isRecording {
       guard let dreamID = audioRecorder.stop() else { return }
-      Task { @MainActor in await persistence.saveDream(id: dreamID) }
+      Task { @MainActor in await saveRecording(dreamID) }
     } else {
       startRecording()
     }

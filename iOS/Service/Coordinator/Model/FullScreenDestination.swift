@@ -7,7 +7,7 @@
 
 enum FullScreenDestination: Identifiable, Hashable {
 
-  case dreamDetail(Dream)
+  case noteDetail(Note)
 
   var id: FullScreenDestination {
     self

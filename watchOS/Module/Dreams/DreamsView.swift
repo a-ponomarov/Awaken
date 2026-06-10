@@ -12,11 +12,7 @@ struct DreamsView: View {
 
   @Environment(AudioPlayer.self) private var audioPlayer
   @Environment(\.persistence) private var persistence
-  #if os(iOS)
   @Environment(Coordinator.self) private var coordinator
-  #elseif os(watchOS)
-  @Environment(Coordinator.self) private var coordinator
-  #endif
 
   var body: some View {
     DreamsViewContent(
@@ -55,9 +51,7 @@ private struct DreamsViewContent: View {
         onDelete: deleteDream
       )
     }
-    #if os(watchOS)
     .ignoresSafeArea(edges: .top)
-    #endif
   }
 
   private func handleDreamSelection(_ dream: Dream) {

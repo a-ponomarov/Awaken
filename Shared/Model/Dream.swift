@@ -14,6 +14,7 @@ final class Dream {
   var id = UUID()
   @Relationship var sleep: Sleep?
   @Relationship var user: User?
+  @Relationship var note: Note?
   var audioFilename: String?
   var isLucid: Bool = false
   var createdAt = Date()

@@ -31,9 +31,9 @@ struct MainView: View {
         }
       }
 
-      Tab("Dream", systemImage: "waveform.badge.microphone", value: .dreams) {
+      Tab(String.notesTitle, systemImage: "book.pages", value: .dreams) {
         NavigationStack(path: $coordinator.dreamsPath) {
-          DreamsView()
+          NotesView()
         }
       }
 
@@ -51,8 +51,8 @@ struct MainView: View {
     }
     .fullScreenCover(item: $coordinator.fullScreenCover) { destination in
       switch destination {
-      case .dreamDetail(let dream):
-        DreamDetailView(dream: dream)
+      case .noteDetail(let note):
+        NoteDetailView(note: note)
       }
     }
     .sheet(item: $coordinator.sheet) { sheet in

@@ -73,6 +73,7 @@ final class AppContainer {
 
     Task { [persistence] in
       await persistence.ensureUser()
+      await persistence.migrateStandaloneDreamsToNotes()
     }
   }
 

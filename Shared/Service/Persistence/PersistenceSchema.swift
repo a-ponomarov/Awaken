@@ -14,7 +14,7 @@ nonisolated
 extension ModelContainer {
 
   static let main: ModelContainer = {
-    let schema = Schema(versionedSchema: MainSchemaV3.self)
+    let schema = Schema(versionedSchema: MainSchemaV4.self)
     let configuration = ModelConfiguration(
       schema: schema,
       url: URL.applicationSupportDirectory.appending(path: "Main.store"),
@@ -96,10 +96,25 @@ private enum MainSchemaV3: VersionedSchema {
 
 }
 
+private enum MainSchemaV4: VersionedSchema {
+
+  static let versionIdentifier = Schema.Version(4, 0, 0)
+
+  static let models: [any PersistentModel.Type] = [
+    Sleep.self,
+    Snapshot.self,
+    User.self,
+    Dream.self,
+    Note.self,
+    Time.self
+  ]
+
+}
+
 private struct MainMigrationPlan: SchemaMigrationPlan {
 
   static let schemas: [any VersionedSchema.Type] = [
-    MainSchemaV1.self, MainSchemaV2.self, MainSchemaV3.self
+    MainSchemaV1.self, MainSchemaV2.self, MainSchemaV3.self, MainSchemaV4.self
   ]
 
   static let stages: [MigrationStage] = []

@@ -12,8 +12,14 @@ struct RecordButton: View {
 
   @Environment(\.persistence) private var persistence
 
+  private let saveRecording: ((Persistence, UUID) async -> Void)?
+
+  init(saveRecording: ((Persistence, UUID) async -> Void)? = nil) {
+    self.saveRecording = saveRecording
+  }
+
   var body: some View {
-    RecordButtonContent(persistence: persistence)
+    RecordButtonContent(persistence: persistence, saveRecording: saveRecording)
   }
 
 }
@@ -30,8 +36,14 @@ private struct RecordButtonContent: View {
 
   @State private var model: RecordButtonModel
 
-  init(persistence: Persistence) {
-    _model = State(initialValue: RecordButtonModel(persistence: persistence))
+  init(
+    persistence: Persistence,
+    saveRecording: ((Persistence, UUID) async -> Void)?
+  ) {
+    _model = State(initialValue: RecordButtonModel(
+      persistence: persistence,
+      saveRecording: saveRecording
+    ))
   }
 
   var body: some View {
@@ -39,15 +51,25 @@ private struct RecordButtonContent: View {
       Button {
         model.action()
       } label: {
+#if os(iOS)
+        HStack(spacing: AppLayout.spacing * 3) {
+          recordIcon
+          Text(recordTitle)
+            .font(AppFont.button)
+            .foregroundStyle(AppColors.primary)
+            .lineLimit(1)
+            .minimumScaleFactor(0.75)
+          Spacer(minLength: 0)
+        }
+        .padding(AppLayout.cardPadding)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(RoundedRectangle(cornerRadius: AppLayout.cardRadius, style: .continuous))
+        .cardStyle()
+#else
         ZStack {
-          Image(systemName: model.isRecording ? "stop.fill" : "waveform.badge.plus")
-            .font(.light(size: Constants.iconFontSize))
-            .frame(width: Constants.buttonSize, height: Constants.buttonSize)
-            .foregroundColor(.white)
+          recordIcon
         }
         .padding(.top, Constants.topPadding)
-#if os(iOS)
-        .padding(.bottom)
 #endif
       }
       .buttonStyle(.plain)
@@ -67,6 +89,17 @@ private struct RecordButtonContent: View {
         Text(microphonePermissionMessage)
       }
     }
+  }
+
+  private var recordIcon: some View {
+    Image(systemName: model.isRecording ? "stop.fill" : "waveform.badge.plus")
+      .font(.light(size: Constants.iconFontSize))
+      .frame(width: Constants.buttonSize, height: Constants.buttonSize)
+      .foregroundStyle(AppColors.primary)
+  }
+
+  private var recordTitle: String {
+    model.isRecording ? String.stopRecording : String.addAudio
   }
 
   private var microphonePermissionMessage: String {

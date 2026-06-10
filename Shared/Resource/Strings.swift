@@ -23,6 +23,7 @@ extension String {
   static let ok = String(localized: "OK", comment: "Generic confirmation button")
   static let done = String(localized: "Done", comment: "Generic completion button")
   static let cancel = String(localized: "Cancel", comment: "Generic cancel button")
+  static let delete = String(localized: "Delete", comment: "Generic delete button")
   static let settings = String(localized: "Settings", comment: "Label for navigating to system Settings")
   static let privacyPolicy = String(localized: "Privacy Policy", comment: "Link label opening the privacy policy")
   static let settingsTitle = settings
@@ -128,6 +129,16 @@ extension String {
   )
   static let pause = String(localized: "Pause", comment: "Pause action button")
   static let resume = String(localized: "Resume", comment: "Resume action button")
+
+  // MARK: - Notes
+  static let notesTitle = String(localized: "Notes", comment: "A tab for viewing and creating notes about dreams")
+  static let newNote = String(localized: "New note", comment: "A button that creates a new note")
+  static let audio = String(localized: "Audio", comment: "A label displayed above the audio recording section")
+  static let addAudio = String(localized: "Add audio", comment: "A button that adds an audio note")
+  static let recording = String(localized: "Recording", comment: "A label for the recording state of an audio recording")
+  static let stopRecording = String(localized: "Stop recording", comment: "A button that stops recording audio")
+  static let deleteAudio = String(localized: "Delete audio", comment: "A button that deletes the audio note")
+  static let notePlaceholder = String(localized: "Describe what you remember", comment: "A placeholder text for a note editor")
 
   // MARK: - Health
   static let healthPermissionsMessage = String(

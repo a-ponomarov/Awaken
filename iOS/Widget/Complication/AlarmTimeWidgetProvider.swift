@@ -47,7 +47,8 @@ struct AlarmTimeWidgetProvider: TimelineProvider {
   }
 
   private var activeAlarmDate: Date? {
-    let activeAlarm = (try? alarmManager.alarms)?.first
+    let activeAlarm = (try? alarmManager.alarms)?
+      .first { $0.id == AlarmIdentifiers.wake }
     if let schedule = activeAlarm?.schedule, case .fixed(let date) = schedule {
       return date
     }
