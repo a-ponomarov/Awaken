@@ -7,7 +7,7 @@
 
 enum Root {
 
-  case paywall
+  case onboarding
   case main
 
 }

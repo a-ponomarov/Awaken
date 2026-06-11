@@ -24,16 +24,7 @@ final class Store {
   private let defaults: KeyValueStore
 
   var entitlementState: EntitlementState
-  var hasTemporaryPaywallBypass = false
   var isRefreshing = false
-
-  var effectiveEntitlementState: EntitlementState {
-    if entitlementState == .active || hasTemporaryPaywallBypass {
-      .active
-    } else {
-      .inactive
-    }
-  }
 
   @MainActor
   deinit {
@@ -95,10 +86,6 @@ final class Store {
     }
     entitlementState = .inactive
     defaults.removeObject(forKey: StorageKey.subscriptionExpirationDate)
-  }
-
-  func enableTemporaryPaywallBypass() {
-    hasTemporaryPaywallBypass = true
   }
 
 }

@@ -118,6 +118,23 @@
         }
       }
     },
+    "Apple Watch uses heart rate and motion to help find a gentler wake-up moment." : {
+      "comment" : "Onboarding goal screen subtitle",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch использует пульс и движения, чтобы помочь найти более мягкий момент для пробуждения."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch використовує пульс і рухи, щоб допомогти знайти м’якший момент для пробудження."
+          }
+        }
+      }
+    },
     "Audio" : {
       "comment" : "A label displayed above the audio recording section",
       "localizations" : {
@@ -169,6 +186,23 @@
         }
       }
     },
+    "Awaken connects your night, morning, and focused work into one daily rhythm." : {
+      "comment" : "Onboarding ecosystem screen subtitle",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awaken объединяет ночь, утро и сфокусированную работу в один ежедневный ритм."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awaken поєднує ніч, ранок і сфокусовану роботу в один щоденний ритм."
+          }
+        }
+      }
+    },
     "BILLION" : {
       "comment" : "Large-number unit suffix",
       "localizations" : {
@@ -199,6 +233,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Скасувати"
+          }
+        }
+      }
+    },
+    "Capture dreams while they are still vivid, with text and audio notes." : {
+      "comment" : "Onboarding notes feature description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохраняйте сны, пока они ещё яркие, с помощью текстовых и аудиозаметок."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зберігайте сни, поки вони ще яскраві, за допомогою текстових і аудіонотаток."
+          }
+        }
+      }
+    },
+    "Smart wake-up modes" : {
+      "comment" : "Onboarding goal screen title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режимы умного пробуждения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режими розумного пробудження"
           }
         }
       }
@@ -691,6 +759,23 @@
         }
       }
     },
+    "Dream notes" : {
+      "comment" : "Onboarding notes feature title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заметки о снах"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нотатки про сни"
+          }
+        }
+      }
+    },
     "DREAMING" : {
       "comment" : "Wake-stage badge label used after the prefix \"WAKE IN\"",
       "localizations" : {
@@ -738,6 +823,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Мітка фокусу"
+          }
+        }
+      }
+    },
+    "Focus timer" : {
+      "comment" : "Onboarding timer feature title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер фокуса"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер фокусу"
           }
         }
       }
@@ -1156,6 +1258,23 @@
         }
       }
     },
+    "Remember dreams. Build focus." : {
+      "comment" : "Onboarding ecosystem screen title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помните сны. Развивайте фокус."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пам’ятайте сни. Розвивайте фокус."
+          }
+        }
+      }
+    },
     "Resume" : {
       "comment" : "Resume action button",
       "localizations" : {
@@ -1220,23 +1339,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Налаштування"
-          }
-        }
-      }
-    },
-    "Skip paywall until app restart" : {
-      "comment" : "VoiceOver label for the White Door button",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пропустить экран подписки до перезапуска приложения"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Пропустити екран підписки до перезапуску застосунку"
           }
         }
       }
@@ -1668,6 +1770,23 @@
         }
       }
     },
+    "Turn morning intention into focused sessions that move you toward your goals." : {
+      "comment" : "Onboarding timer feature description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Превращайте утреннее намерение в сфокусированные сессии, которые двигают вас к целям."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перетворюйте ранковий намір на сфокусовані сесії, що наближають вас до цілей."
+          }
+        }
+      }
+    },
     "Waiting for Network" : {
       "comment" : "Network loading state on the paywall",
       "localizations" : {
@@ -1685,6 +1804,23 @@
         }
       }
     },
+    "Wake while dreaming, when memories are easier to capture." : {
+      "comment" : "Onboarding dream wake-up goal description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Просыпайтесь во время сновидения, когда воспоминания легче записать."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прокидайтеся під час сновидіння, коли спогади легше записати."
+          }
+        }
+      }
+    },
     "WAKE DURING" : {
       "comment" : "Title for the wake-stage picker",
       "localizations" : {
@@ -1698,6 +1834,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ФАЗА ПРОБУДЖЕННЯ"
+          }
+        }
+      }
+    },
+    "Wake during a lighter stage, when getting up can feel easier." : {
+      "comment" : "Onboarding light sleep wake-up goal description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Просыпайтесь во время более лёгкой фазы, когда вставать может быть проще."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прокидайтеся під час легшої фази, коли вставати може бути простіше."
           }
         }
       }

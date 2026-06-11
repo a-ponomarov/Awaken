@@ -560,7 +560,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.2;
-				MARKETING_VERSION = 10.10.10;
+				MARKETING_VERSION = 11.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -605,7 +605,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.2;
-				MARKETING_VERSION = 10.10.10;
+				MARKETING_VERSION = 11.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -770,7 +770,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 10.10.10;
+				MARKETING_VERSION = 11.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -809,7 +809,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 10.10.10;
+				MARKETING_VERSION = 11.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -851,7 +851,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 10.10.10;
+				MARKETING_VERSION = 11.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -894,7 +894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 10.10.10;
+				MARKETING_VERSION = 11.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -932,7 +932,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 10.10.10;
+				MARKETING_VERSION = 11.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -967,7 +967,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 10.10.10;
+				MARKETING_VERSION = 11.11.11;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;

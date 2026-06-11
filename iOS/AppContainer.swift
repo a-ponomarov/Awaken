@@ -78,7 +78,7 @@ final class AppContainer {
   }
 
   func syncRoot() {
-    coordinator.updateRoot(entitlementState: store.effectiveEntitlementState)
+    coordinator.updateRoot(entitlementState: store.entitlementState)
   }
 
   private func observeStore() {

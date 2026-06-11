@@ -24,7 +24,7 @@
     "_developerTeamID" : "67CSC8R9LU",
     "_disableDialogs" : false,
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 800710599.56184804,
+    "_lastSynchronizedDate" : 802798637.15140295,
     "_locale" : "en_US",
     "_renewalBillingIssuesEnabled" : false,
     "_storefront" : "USA",
@@ -41,11 +41,6 @@
           "description" : "",
           "displayName" : "Awaken",
           "locale" : "en_US"
-        },
-        {
-          "description" : "",
-          "displayName" : "Awaken*",
-          "locale" : "en_US"
         }
       ],
       "name" : "Subscription",
@@ -54,16 +49,25 @@
           "adHocOffers" : [
 
           ],
+          "billingPlans" : [
+            {
+              "billingPlanType" : "BILLED_UPFRONT",
+              "commitmentDisplayPrice" : "2.99",
+              "displayPrice" : "2.99",
+              "internalID" : "6761704773_BILLED_UPFRONT",
+              "isEnabled" : true
+            }
+          ],
           "codeOffers" : [
 
           ],
-          "displayPrice" : "9.99",
+          "displayPrice" : "2.99",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "6761704773",
           "introductoryOffer" : {
             "billingPlanType" : "BILLED_UPFRONT",
-            "internalID" : "77725E40",
+            "internalID" : "C40E2B75",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P1W"
@@ -71,7 +75,7 @@
           "introductoryOffers" : [
             {
               "billingPlanType" : "BILLED_UPFRONT",
-              "internalID" : "77725E40",
+              "internalID" : "C40E2B75",
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
               "subscriptionPeriod" : "P1W"
@@ -79,13 +83,8 @@
           ],
           "localizations" : [
             {
-              "description" : "Awaken*",
-              "displayName" : "Subscribe",
-              "locale" : "en_US"
-            },
-            {
               "description" : "Awaken",
-              "displayName" : "Subscribe",
+              "displayName" : "Warm Up",
               "locale" : "en_US"
             }
           ],

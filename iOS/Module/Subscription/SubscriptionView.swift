@@ -30,7 +30,6 @@ struct SubscriptionView: View {
     }()
     static let wifiIconFontSize = 51.0
     static let networkSpacing = 20.0
-    static let skipButtonIconFontSize = 17.0
 
   }
 
@@ -44,29 +43,6 @@ struct SubscriptionView: View {
       } else {
         networkStatusView
       }
-    }
-    .overlay(alignment: .topTrailing) {
-      Button {
-        store.enableTemporaryPaywallBypass()
-      } label: {
-        HStack(spacing: AppLayout.spacing * 2) {
-          Image(systemName: "door.french.open")
-            .font(.system(size: Constants.skipButtonIconFontSize, weight: .semibold))
-        }
-        .font(AppFont.buttonSmall)
-        .foregroundStyle(AppColors.primary)
-        .padding(.horizontal, AppLayout.spacing * 4)
-        .padding(.vertical, AppLayout.spacing * 2)
-        .background(AppColors.surface)
-        .clipShape(Capsule())
-        .overlay {
-          Capsule()
-            .stroke(AppColors.accent, lineWidth: AppLayout.stroke)
-        }
-      }
-      .buttonStyle(.plain)
-      .padding(AppLayout.cardPadding)
-      .accessibilityLabel(Text("Skip paywall until app restart", comment: "VoiceOver label for the White Door button"))
     }
     .task {
       await store.refreshPurchasedProducts()

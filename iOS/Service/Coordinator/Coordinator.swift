@@ -25,7 +25,7 @@ final class Coordinator {
     case .active:
       root = .main
     case .inactive:
-      root = .paywall
+      root = .onboarding
     }
   }
 

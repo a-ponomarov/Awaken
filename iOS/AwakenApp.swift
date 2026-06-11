@@ -36,10 +36,10 @@ private struct ContentView: View {
   var body: some View {
     Group {
       switch coordinator.root {
+      case .onboarding:
+        OnboardingView()
       case .main:
         MainView()
-      case .paywall:
-        SubscriptionView()
       }
     }
     .preferredColorScheme(.dark)
