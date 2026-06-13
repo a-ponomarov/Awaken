@@ -1,6 +1,6 @@
 //
 //  TimePicker.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //

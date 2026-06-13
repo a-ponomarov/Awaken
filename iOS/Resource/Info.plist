@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSAlarmKitUsageDescription</key>
-	<string>Awaken uses alarms to wake you up and notify you when focus and break timers end.</string>
+	<string>App uses alarms to wake you up and notify you when focus and break timers end.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>

@@ -1,6 +1,6 @@
 //
 //  NoteAudioCard.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/10/2026.
 //
@@ -13,6 +13,7 @@ struct NoteAudioCard: View {
 
   @Environment(\.persistence) private var persistence
   @Environment(AudioPlayer.self) private var audioPlayer
+  @Environment(AudioRecorder.self) private var audioRecorder
   @State private var progressByID: [UUID: Double] = [:]
   @State private var draggingID: UUID?
   @State private var timerTask: Task<Void, Never>?
@@ -37,7 +38,7 @@ struct NoteAudioCard: View {
       HStack {
         PlayButton(
           isPlaying: isPlaying(dream),
-          progress: isCurrent(dream) ? progressBinding(for: dream) : .constant(0),
+          progress: progressBinding(for: dream),
           completion: { playPause(dream) }
         )
         audioDateLabel(for: dream)
@@ -89,7 +90,7 @@ struct NoteAudioCard: View {
 
   private var audioRecords: [Dream] {
     note.dreams
-      .sorted { $0.createdAt < $1.createdAt }
+      .sorted { $0.createdAt > $1.createdAt }
       .filter { dream in
         guard let filename = dream.audioFilename else { return false }
         return audioURL(filename: filename) != nil
@@ -130,6 +131,7 @@ struct NoteAudioCard: View {
       audioPlayer.pause()
       return
     }
+    guard !audioRecorder.isRecording else { return }
 
     guard let filename = dream.audioFilename,
           let url = audioURL(filename: filename)
@@ -145,6 +147,8 @@ struct NoteAudioCard: View {
   }
 
   private func seek(_ dream: Dream, to newProgress: Double) {
+    guard isCurrent(dream) || !audioRecorder.isRecording else { return }
+
     if !isCurrent(dream),
        let filename = dream.audioFilename,
        let url = audioURL(filename: filename) {

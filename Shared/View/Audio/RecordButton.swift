@@ -1,6 +1,6 @@
 //
 //  RecordButton.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -11,6 +11,8 @@ import SwiftUI
 struct RecordButton: View {
 
   @Environment(\.persistence) private var persistence
+  @Environment(AudioPlayer.self) private var audioPlayer
+  @Environment(AudioRecorder.self) private var audioRecorder
 
   private let saveRecording: ((Persistence, UUID) async -> Void)?
 
@@ -19,7 +21,12 @@ struct RecordButton: View {
   }
 
   var body: some View {
-    RecordButtonContent(persistence: persistence, saveRecording: saveRecording)
+    RecordButtonContent(
+      persistence: persistence,
+      audioPlayer: audioPlayer,
+      audioRecorder: audioRecorder,
+      saveRecording: saveRecording
+    )
   }
 
 }
@@ -35,13 +42,18 @@ private struct RecordButtonContent: View {
   }
 
   @State private var model: RecordButtonModel
+  @Environment(\.scenePhase) private var scenePhase
 
   init(
     persistence: Persistence,
+    audioPlayer: AudioPlayer,
+    audioRecorder: AudioRecorder,
     saveRecording: ((Persistence, UUID) async -> Void)?
   ) {
     _model = State(initialValue: RecordButtonModel(
       persistence: persistence,
+      audioPlayer: audioPlayer,
+      audioRecorder: audioRecorder,
       saveRecording: saveRecording
     ))
   }
@@ -88,6 +100,10 @@ private struct RecordButtonContent: View {
       } message: {
         Text(microphonePermissionMessage)
       }
+    }
+    .onChange(of: scenePhase) { _, phase in
+      guard phase != .active else { return }
+      model.stopRecording()
     }
   }
 

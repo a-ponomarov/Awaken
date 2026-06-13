@@ -1,6 +1,6 @@
 //
 //  Strings.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -22,6 +22,7 @@ extension String {
   // MARK: - Common
   static let ok = String(localized: "OK", comment: "Generic confirmation button")
   static let done = String(localized: "Done", comment: "Generic completion button")
+  static let start = String(localized: "Start", comment: "Generic start button")
   static let cancel = String(localized: "Cancel", comment: "Generic cancel button")
   static let delete = String(localized: "Delete", comment: "Generic delete button")
   static let settings = String(localized: "Settings", comment: "Label for navigating to system Settings")
@@ -31,7 +32,6 @@ extension String {
   static let settingsSourceCode = String(localized: "Source Code", comment: "Settings source code link label")
 
   // MARK: - App
-  static let awaken = String(localized: "AWAKEN", comment: "App name displayed on the main screen")
   static let bedtimeMessage = String(
     localized: "Sleep now, wake at:",
     comment: "Bedtime recommendation header"
@@ -101,20 +101,24 @@ extension String {
 
   // MARK: - Time Module
   static let timeTitle = String(localized: "Time", comment: "Time module title")
-  static let timeComplete = String(localized: "Time is up", comment: "Timer completion message")
+  static let timeComplete = String(localized: "is up", comment: "Timer completion message shown after the app name Time")
   static let timePaused = String(localized: "Time paused", comment: "Status shown when a timer is paused")
   static let timeTaskPlaceholder = String(
     localized: "I'm focusing on...",
     comment: "Placeholder for the focus task input"
   )
   static let timeHistoryTaskPlaceholder = String(
-    localized: "Focus label",
-    comment: "Placeholder for the focus label in history rows"
+    localized: "Task name",
+    comment: "Placeholder for the completed focus session task name"
+  )
+  static let focusNotePlaceholder = String(
+    localized: "What was done and achieved?",
+    comment: "Placeholder for notes attached to a completed focus session"
   )
   static let history = String(localized: "History", comment: "Section title for past timer sessions")
-  static let addFocusLabel = String(
-    localized: "+ Add a focus label",
-    comment: "Button to add a label to a timer session"
+  static let emptyTaskName = String(
+    localized: "Empty task name",
+    comment: "Fallback title for a completed focus session without a task name"
   )
   nonisolated static let today = String(localized: "Today", comment: "Date group header")
   nonisolated static let tomorrow = String(localized: "Tomorrow", comment: "Date group header")
@@ -129,6 +133,10 @@ extension String {
   )
   static let pause = String(localized: "Pause", comment: "Pause action button")
   static let resume = String(localized: "Resume", comment: "Resume action button")
+  static let upNext = String(localized: "Up Next", comment: "Section title for queued focus tasks")
+  static let addFocusTask = String(localized: "Add focus task", comment: "Accessibility label for adding a queued focus task")
+  static let addToUpNext = String(localized: "Add to Up Next", comment: "Button that adds a focus task to the queue")
+
 
   // MARK: - Notes
   static let notesTitle = String(localized: "Notes", comment: "A tab for viewing and creating notes about dreams")

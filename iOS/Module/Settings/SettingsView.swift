@@ -1,6 +1,6 @@
 //
 //  SettingsView.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/2/2026.
 //

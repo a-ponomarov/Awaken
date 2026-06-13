@@ -17,29 +17,8 @@
       "blur-material" : null,
       "layers" : [
         {
-          "fill-specializations" : [
-            {
-              "value" : {
-                "solid" : "extended-gray:1.00000,1.00000"
-              }
-            },
-            {
-              "appearance" : "dark",
-              "value" : {
-                "solid" : "extended-gray:1.00000,1.00000"
-              }
-            }
-          ],
-          "glass" : true,
-          "image-name" : "bell.badge.waveform.png",
-          "name" : "bell.badge.waveform",
-          "position" : {
-            "scale" : 1,
-            "translation-in-points" : [
-              0,
-              0
-            ]
-          }
+          "image-name" : "hourglass.png",
+          "name" : "hourglass"
         }
       ],
       "shadow" : {

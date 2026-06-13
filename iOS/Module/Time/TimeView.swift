@@ -1,10 +1,11 @@
 //
 //  TimeView.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
 
+import SwiftData
 import SwiftUI
 
 struct TimeView: View {
@@ -21,7 +22,7 @@ struct TimeView: View {
       trailing: AppLayout.cardPadding
     )
     static let customDurationSheetHeight = 250.0
-    static let historyLabelSheetHeight = 166.0
+    static let focusTaskEditorSheetHeight = 160.0
     static let defaultCustomDuration = 45
     static let durationPresets = [25, 45, 90]
     static let minimumDurationMinutes = TimeView.minimumDurationMinutes
@@ -30,11 +31,21 @@ struct TimeView: View {
   }
 
   @Environment(CountdownViewModel.self) private var timeService
+  @Query(
+    filter: #Predicate<Note> { $0.focusSession != nil },
+    sort: \Note.createdAt,
+    order: .reverse
+  ) private var focusNotes: [Note]
   @State private var isShowingCustomDurationSheet = false
+  @State private var focusTaskStartContext: FocusTaskStartContext?
+  @State private var focusTaskEditorContext: FocusTaskEditorContext?
   @State private var customDurationMinutes = Constants.durationPresets.first
     ?? Constants.defaultCustomDuration
-  @State private var historyLabelDraft = ""
-  @State private var selectedHistoryRecord: TimeRecord?
+  @State private var focusTaskStartDurationMinutes = Constants.durationPresets.first
+    ?? Constants.defaultCustomDuration
+  @State private var pendingFocusRecord: TimeRecord?
+  @State private var pendingFocusNoteID: UUID?
+  @State private var selectedFocusDetail: TimeRecordDetailContext?
 
   var body: some View {
     @Bindable var timeService = timeService
@@ -51,11 +62,53 @@ struct TimeView: View {
         .listRowBackground(Color.clear)
         .listRowSeparator(.hidden)
 
+        Section {
+          ForEach(timeService.focusQueue) { focusTask in
+            TimeFocusQueueRow(
+              focusTask: focusTask,
+              isEnabled: timeService.status == .idle,
+              onSelect: { showFocusTaskEditor(for: focusTask) },
+              onStart: { showFocusTaskStartDurationSheet(for: focusTask) }
+            )
+            .listRowInsets(AppLayout.rowItemInsets)
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+              Button(action: { timeService.deleteFocusTask(focusTask) }) {
+                Image(systemName: "trash")
+              }
+              .tint(.clear)
+            }
+          }
+        } header: {
+          HStack {
+            Text(String.upNext.uppercased())
+              .font(AppFont.subtitle).bold()
+              .foregroundStyle(AppColors.primary)
+
+            Spacer()
+
+            Button(action: showFocusTaskEditor) {
+              Image(systemName: "plus")
+                .font(AppFont.buttonSmall)
+                .foregroundStyle(AppColors.primary)
+                .frame(width: 32, height: 32)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(String.addFocusTask)
+          }
+          .padding(.top, AppLayout.spacing)
+        }
+
         ForEach(historySections) { section in
           Section {
             ForEach(section.records) { timeRecord in
-              TimeHistoryRow(timeRecord: timeRecord) {
-                editTimeRecord(timeRecord)
+              TimeHistoryRow(
+                timeRecord: timeRecord,
+                hasTextNote: hasTextNote(for: timeRecord),
+                hasAudioRecording: hasAudioRecording(for: timeRecord)
+              ) {
+                openTimeRecordDetail(timeRecord)
               }
               .listRowInsets(AppLayout.rowItemInsets)
               .listRowBackground(Color.clear)
@@ -103,65 +156,157 @@ struct TimeView: View {
         minimumMinutes: Constants.minimumDurationMinutes,
         maximumMinutes: Constants.maximumDurationMinutes,
         selectedMinutes: $customDurationMinutes,
-        onCancel: { isShowingCustomDurationSheet = false },
+        onCancel: cancelCustomDuration,
         onDone: applyCustomDuration
       )
       .presentationDetents([.height(Constants.customDurationSheetHeight)])
       .presentationDragIndicator(.hidden)
     }
-    .sheet(isPresented: isShowingHistoryLabelSheet) {
-      HistoryLabelSheet(
-        label: $historyLabelDraft,
-        onCancel: dismissHistoryLabelSheet,
-        onDone: applyHistoryLabel
+    .sheet(item: $focusTaskEditorContext) { context in
+      QueuedTimeEditorView(
+        initialTitle: context.initialTitle,
+        onCancel: cancelFocusTaskEditor,
+        onSave: { saveFocusTask(title: $0, context: context) }
       )
-      .presentationDetents([.height(Constants.historyLabelSheetHeight)])
+      .presentationDetents([.height(Constants.focusTaskEditorSheetHeight)])
       .presentationDragIndicator(.hidden)
+    }
+    .sheet(item: $focusTaskStartContext) { context in
+      DurationSliderSheet(
+        minimumMinutes: Constants.minimumDurationMinutes,
+        maximumMinutes: Constants.maximumDurationMinutes,
+        selectedMinutes: $focusTaskStartDurationMinutes,
+        actionTitle: String.start,
+        onCancel: cancelFocusTaskStartDuration,
+        onDone: { startFocusTask(context: context) }
+      )
+      .presentationDetents([.height(Constants.customDurationSheetHeight)])
+      .presentationDragIndicator(.hidden)
+    }
+    .fullScreenCover(item: $selectedFocusDetail) { detail in
+      TimeRecordDetailView(
+        timeRecord: detail.timeRecord,
+        note: detail.note,
+        onUpdateLabel: { label in
+          timeService.updateTimeRecord(detail.timeRecord, taskName: label)
+        }
+      )
+    }
+    .onChange(of: focusNotes.map(\.id)) { _, _ in
+      openPendingFocusDetailIfNeeded()
     }
   }
 
   private func showCustomDurationSheet() {
-    customDurationMinutes = max(1, Int((timeService.duration / 60).rounded()))
+    customDurationMinutes = selectedDurationMinutes
     isShowingCustomDurationSheet = true
+  }
+
+  private func showFocusTaskEditor() {
+    focusTaskEditorContext = FocusTaskEditorContext(focusTask: nil)
+  }
+
+  private func showFocusTaskEditor(for focusTask: QueuedTimeRecord) {
+    guard timeService.status == .idle else { return }
+    focusTaskEditorContext = FocusTaskEditorContext(focusTask: focusTask)
+  }
+
+  private func showFocusTaskStartDurationSheet(for focusTask: QueuedTimeRecord) {
+    guard timeService.status == .idle else { return }
+    focusTaskStartDurationMinutes = selectedDurationMinutes
+    focusTaskStartContext = FocusTaskStartContext(focusTask: focusTask)
+  }
+
+  private func saveFocusTask(title: String, context: FocusTaskEditorContext) {
+    if let focusTask = context.focusTask {
+      timeService.updateFocusTask(focusTask, title: title)
+    } else {
+      timeService.addFocusTask(title: title)
+    }
+
+    cancelFocusTaskEditor()
+  }
+
+  private func cancelFocusTaskEditor() {
+    focusTaskEditorContext = nil
   }
 
   private func applyCustomDuration() {
     timeService.updateDuration(minutes: customDurationMinutes)
+    cancelCustomDuration()
+  }
+
+  private func cancelCustomDuration() {
     isShowingCustomDurationSheet = false
   }
 
-  private func editTimeRecord(_ timeRecord: TimeRecord) {
-    selectedHistoryRecord = timeRecord
-    historyLabelDraft = timeRecord.taskName
+  private func cancelFocusTaskStartDuration() {
+    focusTaskStartContext = nil
   }
 
-  private func applyHistoryLabel() {
-    guard let selectedHistoryRecord else { return }
-
-    let trimmedLabel = historyLabelDraft.trimmingCharacters(in: .whitespacesAndNewlines)
-    timeService.updateTimeRecord(selectedHistoryRecord, taskName: trimmedLabel)
-
-    dismissHistoryLabelSheet()
+  private func startFocusTask(context: FocusTaskStartContext) {
+    timeService.startFocusTask(
+      context.focusTask,
+      durationMinutes: focusTaskStartDurationMinutes
+    )
+    cancelFocusTaskStartDuration()
   }
 
-  private func dismissHistoryLabelSheet() {
-    selectedHistoryRecord = nil
-    historyLabelDraft = ""
+  private func openTimeRecordDetail(_ timeRecord: TimeRecord) {
+    pendingFocusRecord = timeRecord
+    pendingFocusNoteID = nil
+
+    Task {
+      guard let noteID = await timeService.ensureNote(for: timeRecord) else { return }
+
+      await MainActor.run {
+        pendingFocusNoteID = noteID
+        openPendingFocusDetailIfNeeded()
+      }
+    }
+  }
+
+  private func openPendingFocusDetailIfNeeded() {
+    guard let pendingFocusRecord,
+          let pendingFocusNoteID,
+          let note = focusNotes.first(where: { $0.id == pendingFocusNoteID })
+    else {
+      return
+    }
+
+    let currentRecord = timeService.history.first(where: { $0.id == pendingFocusRecord.id })
+      ?? pendingFocusRecord
+    self.pendingFocusRecord = nil
+    self.pendingFocusNoteID = nil
+    selectedFocusDetail = TimeRecordDetailContext(timeRecord: currentRecord, note: note)
   }
 
   private var historySections: [TimeHistorySection] {
     TimeHistorySection.grouped(from: timeService.history)
   }
 
-  private var isShowingHistoryLabelSheet: Binding<Bool> {
-    Binding(
-      get: { selectedHistoryRecord != nil },
-      set: { isPresented in
-        if !isPresented {
-          dismissHistoryLabelSheet()
-        }
-      }
-    )
+  private var selectedDurationMinutes: Int {
+    max(1, Int((timeService.duration / 60).rounded()))
+  }
+
+  private func hasTextNote(for timeRecord: TimeRecord) -> Bool {
+    guard let noteID = timeRecord.noteID,
+          let note = focusNotes.first(where: { $0.id == noteID })
+    else {
+      return false
+    }
+
+    return !(note.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+  }
+
+  private func hasAudioRecording(for timeRecord: TimeRecord) -> Bool {
+    guard let noteID = timeRecord.noteID,
+          let note = focusNotes.first(where: { $0.id == noteID })
+    else {
+      return false
+    }
+
+    return !note.dreams.isEmpty
   }
 
 }
@@ -226,44 +371,35 @@ private struct TimeHistorySection: Identifiable {
 
 }
 
-private struct HistoryLabelSheet: View {
+private struct FocusTaskStartContext: Identifiable {
 
-  @Binding var label: String
-  let onCancel: () -> Void
-  let onDone: () -> Void
-  @FocusState private var isTextFieldFocused: Bool
+  let focusTask: QueuedTimeRecord
 
-  var body: some View {
-    NavigationStack {
-      TimeTextField(
-        title: String.timeHistoryTaskPlaceholder,
-        text: $label,
-        autocapitalization: .sentences,
-        isEnabled: true,
-        focus: $isTextFieldFocused,
-        onSubmit: {
-          isTextFieldFocused = false
-        },
-        onClear: {
-          label = ""
-        }
-      )
-      .padding(.horizontal, AppLayout.cardPadding)
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        ToolbarItem(placement: .topBarLeading) {
-          Button(String.cancel, action: onCancel).tint(.white)
-        }
+  var id: UUID { focusTask.id }
 
-        ToolbarItem(placement: .topBarTrailing) {
-          Button(String.done, action: onDone).tint(.white)
-        }
-      }
-      .onAppear {
-        isTextFieldFocused = true
-      }
-    }
-    .background(AppColors.background.ignoresSafeArea())
+}
+
+private struct FocusTaskEditorContext: Identifiable {
+
+  let id: UUID
+  let focusTask: QueuedTimeRecord?
+
+  var initialTitle: String {
+    focusTask?.title ?? ""
   }
+
+  init(focusTask: QueuedTimeRecord?) {
+    self.id = focusTask?.id ?? UUID()
+    self.focusTask = focusTask
+  }
+
+}
+
+private struct TimeRecordDetailContext: Identifiable {
+
+  let timeRecord: TimeRecord
+  let note: Note
+
+  var id: UUID { note.id }
 
 }

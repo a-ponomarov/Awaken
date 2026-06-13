@@ -1,6 +1,6 @@
 //
 //  Time.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -28,6 +28,7 @@ struct TimeRecord: Identifiable, Hashable, Sendable {
   let startedAt: Date?
   let endDate: Date?
   let endedAt: Date?
+  let noteID: UUID?
 
 }
 
@@ -63,6 +64,7 @@ final class Time {
   var endedAt: Date?
   
   @Relationship var user: User?
+  @Relationship(deleteRule: .cascade) var note: Note?
 
   var timeRecord: TimeRecord {
     TimeRecord(
@@ -75,7 +77,8 @@ final class Time {
       plannedDuration: plannedDuration,
       startedAt: startedAt,
       endDate: endDate,
-      endedAt: endedAt
+      endedAt: endedAt,
+      noteID: note?.id
     )
   }
 

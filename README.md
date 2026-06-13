@@ -1,4 +1,4 @@
-# Awaken: Smart Alarm
+# Time :)
 
 A watchOS 26.2+ smart alarm that runs a WKExtendedRuntimeSession, samples Core Motion and HealthKit heart rate data, extracts features, and predicts sleep stages using an on-device Core ML model. Each Sleep session is stored in SwiftData and contains snapshots of extracted features with the predicted sleep stage. After each sleep session ends, those snapshots are matched against HealthKit sleep-stage labels and used to update the model.
 
@@ -72,7 +72,7 @@ flowchart TD
 
 ## ML Foundation
 
-Awaken uses the sleep-stage model from [`sleep_stage_classifier`](https://github.com/a-ponomarov/sleep_stage_classifier). That project prepares sleep-stage training data, extracts motion and heart-rate features in Swift, trains an updatable Core ML k-NN classifier, and evaluates it with leave-one-subject-out validation.
+App uses the sleep-stage model from [`sleep_stage_classifier`](https://github.com/a-ponomarov/sleep_stage_classifier). That project prepares sleep-stage training data, extracts motion and heart-rate features in Swift, trains an updatable Core ML k-NN classifier, and evaluates it with leave-one-subject-out validation.
 
 The trained model is bundled with the watchOS target:
 
@@ -83,46 +83,66 @@ The trained model is bundled with the watchOS target:
 ## Project Structure
 
 ```text
-Awaken/
+Time/
+  README.md
   iOS/
-    Model/           Alarm identifiers and Live Activity metadata
+    Model/            iOS-only identifiers and Live Activity metadata
     Module/
-      Alarm/         Alarm setup, recommendations, and time controls
-      Main/          Root tab shell
-      Notes/         Text notes, audio note cards, note list, and note detail UI
-      Settings/      Support, source code, and privacy links
-      Subscription/  StoreKit paywall
-      Time/          Focus timer, duration controls, history, and task labels
-    Resource/        Assets, entitlements, Info.plist, and StoreKit configuration
+      Alarm/          Alarm setup, bedtime settings, recommendations, and time picker UI
+      Main/           Root tab shell for Alarm, Notes, and Time
+      Notes/          Notes list, note detail, text editor, and audio note cards
+      Onboarding/     First-run onboarding flow and reusable onboarding cards
+      Settings/       Settings sheet with support, source, and privacy links
+      Subscription/   StoreKit subscription and paywall UI
+      Time/           Focus timer, queue editing, duration controls, history, and task labels
+    Resource/         iOS assets, entitlements, Info.plist, and StoreKit configuration
     Service/
-      Alarm/         Wake alarm scheduling and observation
-      Coordinator/   Root, tab, sheet, and full-screen navigation
-      Countdown/     Timer state, persistence, recovery, runtime, and alarm actions
-      Network/       Networking service
-      Store/         Subscription and entitlement state
-    Widget/          Live Activity, alarm complication, intents, resources, and widget bundle
+      Alarm/          Alarm scheduling and refresh service
+      Coordinator/    Root state, sheet/full-screen destinations, and navigation paths
+      Countdown/      Countdown state, runtime, persistence, recovery, history, alarm, and actions
+      Network/        Shared network client exposed to the iOS app container
+      Store/          Subscription and entitlement state
+    Widget/
+      Activity/       Countdown Live Activity views, buttons, progress, text, and intents
+      Complication/   Alarm time widget and timeline provider
+      Resource/       Widget assets, entitlements, and Info.plist
+      WidgetsBundle.swift
     AppContainer.swift
-    AwakenApp.swift
+    TimeApp.swift
   watchOS/
-    Model/           Watch-only models
-    Module/          Alarm, dreams, log, lifetime, and main screens
-    Resource/        Assets, entitlements, Info.plist, and ML model
+    Model/            Watch-only models and bundled sleep-stage classifier
+    Module/
+      Alarm/          Watch alarm controls, wake-stage picker, and heart-rate option
+      Dreams/         Dream list, rows, row models, and detail view
+      Lifetime/       Birthday setup, current seconds, and milestone carousel
+      Log/            Sleep/session log list and rows
+      Main/           Watch tab shell for Alarm, Dreams, Lifetime, and Log
+    Resource/         watchOS assets, entitlements, and Info.plist
     Service/
-      Classifier/    Model loading, feature extraction, prediction, and personalization
-      Coordinator/   Routes, sheets, alerts, and full-screen navigation
-      RawDataSource/ HealthKit and Core Motion sources
-      Session.swift  Sleep-session runtime
-    View/            Reusable watch controls and pickers
-    Widget/          Alarm complication, timeline provider, defaults, and widget bundle
+      Classifier/     Core ML model loading, feature extraction, prediction, and updates
+      Coordinator/    Routes, sheets, alerts, full-screen destinations, and navigation state
+      RawDataSource/  HealthKit and Core Motion data sources
+      Session.swift   Extended-runtime sleep session orchestration
+    View/
+      DatePicker/     Reusable watch date picker components
+      TimePicker/     Reusable watch time picker components and formatting
+      ClockView.swift
+      WatchList.swift
+    Widget/           Watch alarm widget, defaults, timeline provider, resources, and bundle
     AppContainer.swift
-    AwakenApp.swift
+    TimeWatchApp.swift
   Shared/
-    Extension/       Swift extensions used across targets
-    Model/           SwiftData models and widget timeline entries
-    Resource/        Colors, fonts, strings, layout constants, and style guide
+    Extension/        Date, formatter, font, and card-style helpers
+    Model/            SwiftData models for alarms, dreams, logs, notes, sleep, snapshots, time, and users
+    Resource/         Colors, constants, fonts, app icon, layout, strings, localization, and code style
     Service/
-      Audio/         Recording, playback, file storage, and waveform extraction
-      Persistence/   SwiftData containers, schema, repositories, and logger
-      Task/          Shared task helpers
-    View/            Audio controls, shared progress views, and alarm complication UI
+      Audio/          Recording, playback, audio file management, and waveform calculation
+      Persistence/    SwiftData schema, containers, repositories, key-value store, and logger
+      Task/           Shared app task helpers
+    View/
+      Alarm/          Shared alarm complication view
+      Audio/          Shared audio controls and waveform view
+      Components/     Shared circular progress and duration slider views
+  Frameworks/         Xcode framework group
+  Products/           Xcode build products group
 ```

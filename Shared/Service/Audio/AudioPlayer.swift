@@ -1,6 +1,6 @@
 //
 //  AudioPlayer.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -61,6 +61,8 @@ final class AudioPlayer: NSObject {
 
   func stop() {
     audioPlayer?.stop()
+    audioPlayer = nil
+    duration = nil
     setupPlayingState()
   }
 

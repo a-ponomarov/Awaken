@@ -1,6 +1,6 @@
 //
 //  CountdownPersistence.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -73,6 +73,26 @@ final class CountdownPersistence {
     )
   }
 
+  func loadFocusQueue() async -> [QueuedTimeRecord] {
+    await prepareIfNeeded()
+    return await persistence.fetchTimeFocusQueue()
+  }
+
+  func appendFocusTask(_ focusTask: QueuedTimeRecord) async throws {
+    await prepareIfNeeded()
+    try await persistence.appendQueuedTime(focusTask)
+  }
+
+  func updateFocusTask(_ focusTask: QueuedTimeRecord) async throws {
+    await prepareIfNeeded()
+    try await persistence.updateQueuedTime(focusTask)
+  }
+
+  func deleteFocusTask(id: UUID) async throws {
+    await prepareIfNeeded()
+    try await persistence.deleteQueuedTime(id: id)
+  }
+
   func appendHistoryRecord(_ timeRecord: TimeRecord) async throws {
     await prepareIfNeeded()
     try await persistence.appendTimeRecordToHistory(timeRecord)
@@ -86,6 +106,11 @@ final class CountdownPersistence {
   func updateHistoryRecord(id: UUID, taskName: String) async throws {
     await prepareIfNeeded()
     try await persistence.updateTimeRecordHistoryLabel(id: id, taskName: taskName)
+  }
+
+  func ensureHistoryRecordNote(id: UUID) async throws -> UUID? {
+    await prepareIfNeeded()
+    return try await persistence.ensureTimeRecordNote(id: id)
   }
 
 }

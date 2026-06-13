@@ -1,6 +1,6 @@
 //
 //  Note.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/10/2026.
 //
@@ -12,8 +12,8 @@ import SwiftData
 final class Note {
 
   var id = UUID()
-  @Relationship(deleteRule: .cascade, inverse: \Dream.note)
-  var dreams: [Dream] = []
+  @Relationship(inverse: \Time.note) var focusSession: Time?
+  @Relationship(deleteRule: .cascade, inverse: \Dream.note) var dreams: [Dream] = []
   var title: String?
   var text: String?
   var createdAt = Date()

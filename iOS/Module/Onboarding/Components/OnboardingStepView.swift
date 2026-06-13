@@ -1,6 +1,6 @@
 //
 //  OnboardingStepView.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/11/2026.
 //
@@ -51,7 +51,7 @@ enum OnboardingStep: CaseIterable, Identifiable {
       )
     case .ecosystem:
       String(
-        localized: "Awaken connects your night, morning, and focused work into one daily rhythm.",
+        localized: "Connect your night, morning, and focused work into one daily rhythm.",
         comment: "Onboarding ecosystem screen subtitle"
       )
     }

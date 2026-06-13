@@ -1,6 +1,6 @@
 //
 //  CountdownHistory.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -40,7 +40,8 @@ final class CountdownHistory {
         plannedDuration: timeRecord.plannedDuration,
         startedAt: timeRecord.startedAt,
         endDate: timeRecord.endDate,
-        endedAt: timeRecord.endedAt
+        endedAt: timeRecord.endedAt,
+        noteID: timeRecord.noteID
       )
     }
   }
@@ -63,7 +64,8 @@ final class CountdownHistory {
       plannedDuration: duration,
       startedAt: startedAt,
       endDate: nil,
-      endedAt: endedAt
+      endedAt: endedAt,
+      noteID: nil
     )
     history.insert(timeRecord, at: 0)
     return timeRecord

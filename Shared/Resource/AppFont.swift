@@ -1,6 +1,6 @@
 //
 //  AppFont.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/10/2026.
 //

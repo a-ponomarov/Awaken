@@ -1,6 +1,6 @@
 //
 //  CountdownViewModel.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -28,6 +28,7 @@ final class CountdownViewModel {
   private let coordinator: CountdownCoordinator
   @ObservationIgnored private var observationTask: Task<Void, Never>?
   @ObservationIgnored private var draftPersistTask: Task<Void, Never>?
+  @ObservationIgnored private var focusQueuePersistTask: Task<Void, Never>?
   private var hasRestoredRunningTimer = false
   private var isSchedulingAlarm = false
   private var state = CountdownState(
@@ -59,10 +60,12 @@ final class CountdownViewModel {
   var showPermissionAlert = false
 
   private(set) var history: [TimeRecord] = []
+  private(set) var focusQueue: [QueuedTimeRecord] = []
 
   deinit {
     observationTask?.cancel()
     draftPersistTask?.cancel()
+    focusQueuePersistTask?.cancel()
   }
 
   init(
@@ -140,6 +143,74 @@ final class CountdownViewModel {
     }
   }
 
+  func addFocusTask(title: String) {
+    let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard !trimmedTitle.isEmpty else { return }
+
+    let focusTask = QueuedTimeRecord(
+      id: UUID(),
+      title: trimmedTitle,
+      createdAt: .now
+    )
+    focusQueue.append(focusTask)
+
+    enqueueFocusQueuePersistence { [weak self] in
+      do {
+        try await self?.persistenceService.appendFocusTask(focusTask)
+      } catch {
+        self?.removeFocusTaskIfPresent(focusTask)
+      }
+    }
+  }
+
+  func deleteFocusTask(_ focusTask: QueuedTimeRecord) {
+    guard let originalIndex = focusQueue.firstIndex(where: { $0.id == focusTask.id }) else {
+      return
+    }
+    focusQueue.removeAll { $0.id == focusTask.id }
+
+    enqueueFocusQueuePersistence { [weak self] in
+      do {
+        try await self?.persistenceService.deleteFocusTask(id: focusTask.id)
+      } catch {
+        self?.restoreDeletedFocusTask(focusTask, originalIndex: originalIndex)
+      }
+    }
+  }
+
+  func updateFocusTask(_ focusTask: QueuedTimeRecord, title: String) {
+    let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard !trimmedTitle.isEmpty else { return }
+
+    guard let index = focusQueue.firstIndex(where: { $0.id == focusTask.id }) else {
+      return
+    }
+
+    let originalFocusTask = focusQueue[index]
+    let updatedFocusTask = QueuedTimeRecord(
+      id: focusTask.id,
+      title: trimmedTitle,
+      createdAt: focusTask.createdAt
+    )
+    focusQueue[index] = updatedFocusTask
+
+    enqueueFocusQueuePersistence { [weak self] in
+      do {
+        try await self?.persistenceService.updateFocusTask(updatedFocusTask)
+      } catch {
+        self?.restoreUpdatedFocusTask(
+          originalFocusTask,
+          ifCurrentTaskIs: updatedFocusTask
+        )
+      }
+    }
+  }
+
+  func startFocusTask(_ focusTask: QueuedTimeRecord, durationMinutes: Int) {
+    guard status == .idle else { return }
+    applyFocusTask(focusTask, startDurationMinutes: durationMinutes)
+  }
+
   func updateTimeRecord(_ timeRecord: TimeRecord, taskName: String) {
     let previousHistory = history
     historyService.update(timeRecord, taskName: taskName, in: &history)
@@ -152,6 +223,32 @@ final class CountdownViewModel {
       } catch {
         self?.history = previousHistory
       }
+    }
+  }
+
+  func ensureNote(for timeRecord: TimeRecord) async -> UUID? {
+    do {
+      guard let noteID = try await persistenceService.ensureHistoryRecordNote(id: timeRecord.id) else {
+        return nil
+      }
+      if let index = history.firstIndex(where: { $0.id == timeRecord.id }) {
+        history[index] = TimeRecord(
+          id: timeRecord.id,
+          taskName: timeRecord.taskName,
+          status: timeRecord.status,
+          duration: timeRecord.duration,
+          alarmID: timeRecord.alarmID,
+          remainingDuration: timeRecord.remainingDuration,
+          plannedDuration: timeRecord.plannedDuration,
+          startedAt: timeRecord.startedAt,
+          endDate: timeRecord.endDate,
+          endedAt: timeRecord.endedAt,
+          noteID: noteID
+        )
+      }
+      return noteID
+    } catch {
+      return nil
     }
   }
 
@@ -174,6 +271,88 @@ final class CountdownViewModel {
       state: &state
     )
     persistDraftDebounced()
+  }
+
+  private func applyFocusTask(
+    _ focusTask: QueuedTimeRecord,
+    startDurationMinutes: Int? = nil
+  ) {
+    guard let originalIndex = focusQueue.firstIndex(where: { $0.id == focusTask.id }) else {
+      return
+    }
+    let previousDraft = state.draft
+    focusQueue.removeAll { $0.id == focusTask.id }
+    sessionMachine.updateTaskName(to: focusTask.title, state: &state)
+
+    if let startDurationMinutes {
+      sessionMachine.updateDuration(
+        minutes: startDurationMinutes,
+        normalizeDuration: normalizedDuration,
+        state: &state
+      )
+    }
+    let appliedDraft = state.draft
+
+    enqueueFocusQueuePersistence { [weak self] in
+      do {
+        try await self?.persistenceService.deleteFocusTask(id: focusTask.id)
+        await self?.persistSession()
+        if startDurationMinutes != nil {
+          self?.start()
+        }
+      } catch {
+        self?.restoreDraft(previousDraft, ifCurrentDraftIs: appliedDraft)
+        self?.restoreDeletedFocusTask(focusTask, originalIndex: originalIndex)
+      }
+    }
+  }
+
+  private func removeFocusTaskIfPresent(_ focusTask: QueuedTimeRecord) {
+    focusQueue.removeAll { $0.id == focusTask.id }
+  }
+
+  private func restoreDeletedFocusTask(
+    _ focusTask: QueuedTimeRecord,
+    originalIndex: Int
+  ) {
+    guard !focusQueue.contains(where: { $0.id == focusTask.id }) else { return }
+    focusQueue.insert(focusTask, at: min(originalIndex, focusQueue.count))
+  }
+
+  private func restoreUpdatedFocusTask(
+    _ originalFocusTask: QueuedTimeRecord,
+    ifCurrentTaskIs expectedFocusTask: QueuedTimeRecord
+  ) {
+    guard let index = focusQueue.firstIndex(where: { $0.id == originalFocusTask.id }),
+          focusQueue[index] == expectedFocusTask
+    else {
+      return
+    }
+
+    focusQueue[index] = originalFocusTask
+  }
+
+  private func restoreDraft(
+    _ previousDraft: CountdownDraftState,
+    ifCurrentDraftIs expectedDraft: CountdownDraftState
+  ) {
+    guard state.draft.taskName == expectedDraft.taskName,
+          state.draft.duration == expectedDraft.duration
+    else {
+      return
+    }
+
+    state.draft = previousDraft
+  }
+
+  private func enqueueFocusQueuePersistence(
+    _ operation: @escaping @MainActor () async -> Void
+  ) {
+    let previousTask = focusQueuePersistTask
+    focusQueuePersistTask = Task { @MainActor in
+      await previousTask?.value
+      await operation()
+    }
   }
 
   private func start() {
@@ -342,6 +521,10 @@ final class CountdownViewModel {
     ) {
     case .none:
       return
+    case .synchronizedPaused(let updatedState):
+      state = updatedState
+      runtime.stopClock()
+      Task { [weak self] in await self?.persistSession() }
     case .updated(let updatedState, let stopClock):
       state = updatedState
       if stopClock {
@@ -406,6 +589,7 @@ final class CountdownViewModel {
     state = snapshot.state
     state.draft.duration = normalizedDuration(state.draft.duration)
     history = snapshot.history
+    focusQueue = await persistenceService.loadFocusQueue()
   }
 
   private var restoredCountdownDuration: TimeInterval {

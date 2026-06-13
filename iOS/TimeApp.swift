@@ -1,6 +1,6 @@
 //
-//  AwakenApp.swift
-//  Awaken
+//  TimeApp.swift
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 @main
-struct AwakenApp: App {
+struct TimeApp: App {
 
   @State private var container = AppContainer()
 
@@ -23,6 +23,7 @@ struct AwakenApp: App {
     .environment(container.timeService)
     .environment(container.coordinator)
     .environment(container.audioPlayer)
+    .environment(container.audioRecorder)
     .environment(container.alarmService)
     .environment(\.persistence, container.persistence)
   }

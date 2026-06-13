@@ -1,6 +1,6 @@
 //
 //  PersistenceSchema.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -14,7 +14,7 @@ nonisolated
 extension ModelContainer {
 
   static let main: ModelContainer = {
-    let schema = Schema(versionedSchema: MainSchemaV4.self)
+    let schema = Schema(versionedSchema: MainSchemaV5.self)
     let configuration = ModelConfiguration(
       schema: schema,
       url: URL.applicationSupportDirectory.appending(path: "Main.store"),
@@ -111,10 +111,30 @@ private enum MainSchemaV4: VersionedSchema {
 
 }
 
+private enum MainSchemaV5: VersionedSchema {
+
+  static let versionIdentifier = Schema.Version(5, 0, 0)
+
+  static let models: [any PersistentModel.Type] = [
+    Sleep.self,
+    Snapshot.self,
+    User.self,
+    Dream.self,
+    Note.self,
+    Time.self,
+    QueuedTime.self
+  ]
+
+}
+
 private struct MainMigrationPlan: SchemaMigrationPlan {
 
   static let schemas: [any VersionedSchema.Type] = [
-    MainSchemaV1.self, MainSchemaV2.self, MainSchemaV3.self, MainSchemaV4.self
+    MainSchemaV1.self,
+    MainSchemaV2.self,
+    MainSchemaV3.self,
+    MainSchemaV4.self,
+    MainSchemaV5.self
   ]
 
   static let stages: [MigrationStage] = []

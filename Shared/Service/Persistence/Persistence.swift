@@ -1,6 +1,6 @@
 //
 //  Persistence.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -19,12 +19,14 @@ enum PersistenceError: Error {
   case fetchTimeSessionFailed
   case fetchTimeSessionByAlarmIDFailed
   case fetchTimeHistoryFailed
+  case fetchTimeFocusQueueFailed
   case fetchUserFailed
   case fetchFirstUserFailed
   case createUserFailed
   case fetchDreamFailed
   case fetchNoteFailed
   case migrateDreamsToNotesFailed
+  case cleanupOrphanedAudioFilesFailed
 
 }
 
@@ -50,6 +52,11 @@ extension PersistenceError: LocalizedError {
       return String(localized: "Couldn't load the timer for this alarm.", comment: "Persistence error when fetching the timer by alarm ID")
     case .fetchTimeHistoryFailed:
       return String(localized: "Couldn't load your timer history.", comment: "Persistence error when fetching timer history")
+    case .fetchTimeFocusQueueFailed:
+      return String(
+        localized: "Couldn't load your focus queue.",
+        comment: "Persistence error when fetching queued focus tasks"
+      )
     case .fetchUserFailed:
       return String(localized: "Couldn't load your profile.", comment: "Persistence error when fetching a user profile")
     case .fetchFirstUserFailed:
@@ -70,6 +77,11 @@ extension PersistenceError: LocalizedError {
       return String(
         localized: "Couldn't migrate dream recordings to notes.",
         comment: "Persistence error when migrating existing dream recordings into notes"
+      )
+    case .cleanupOrphanedAudioFilesFailed:
+      return String(
+        localized: "Couldn't clean up unused audio files.",
+        comment: "Persistence error when deleting audio files that are not linked to records"
       )
     }
   }

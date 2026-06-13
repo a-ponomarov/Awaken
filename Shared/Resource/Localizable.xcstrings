@@ -27,23 +27,6 @@
         }
       }
     },
-    "+ Add a focus label" : {
-      "comment" : "Button to add a label to a timer session",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "+ Добавить метку фокуса"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "+ Додати мітку фокусу"
-          }
-        }
-      }
-    },
     "Add audio" : {
       "comment" : "A button that adds an audio note",
       "localizations" : {
@@ -57,6 +40,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Додати аудіо"
+          }
+        }
+      }
+    },
+    "Add focus task" : {
+      "comment" : "Accessibility label for adding a queued focus task",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить фокус-задачу"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати фокус-завдання"
+          }
+        }
+      }
+    },
+    "Add to Up Next" : {
+      "comment" : "Button that adds a focus task to the queue",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить в очередь"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Додати в чергу"
           }
         }
       }
@@ -169,40 +186,6 @@
         }
       }
     },
-    "AWAKEN" : {
-      "comment" : "App name displayed on the main screen",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AWAKEN"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AWAKEN"
-          }
-        }
-      }
-    },
-    "Awaken connects your night, morning, and focused work into one daily rhythm." : {
-      "comment" : "Onboarding ecosystem screen subtitle",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Awaken объединяет ночь, утро и сфокусированную работу в один ежедневный ритм."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Awaken поєднує ніч, ранок і сфокусовану роботу в один щоденний ритм."
-          }
-        }
-      }
-    },
     "BILLION" : {
       "comment" : "Large-number unit suffix",
       "localizations" : {
@@ -254,23 +237,6 @@
         }
       }
     },
-    "Smart wake-up modes" : {
-      "comment" : "Onboarding goal screen title",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Режимы умного пробуждения"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Режими розумного пробудження"
-          }
-        }
-      }
-    },
     "Confirm purchase" : {
       "comment" : "Paywall purchase confirmation label",
       "localizations" : {
@@ -284,6 +250,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Підтвердити покупку"
+          }
+        }
+      }
+    },
+    "Connect your night, morning, and focused work into one daily rhythm." : {
+      "comment" : "Onboarding ecosystem screen subtitle",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Объединяйте ночь, утро и сфокусированную работу в один ежедневный ритм."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поєднуйте ніч, ранок і сфокусовану роботу в один щоденний ритм."
           }
         }
       }
@@ -338,6 +321,10 @@
           }
         }
       }
+    },
+    "Couldn't clean up unused audio files." : {
+      "comment" : "Persistence error when deleting audio files that are not linked to records",
+      "shouldTranslate" : false
     },
     "Couldn't create the default profile." : {
       "comment" : "Persistence error when creating the default user profile",
@@ -426,11 +413,37 @@
     },
     "Couldn't load the dream entry." : {
       "comment" : "Persistence error when fetching a dream record",
-      "shouldTranslate" : false
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось загрузить запись сна."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося завантажити запис сну."
+          }
+        }
+      }
     },
     "Couldn't load the note." : {
       "comment" : "Persistence error when fetching a note",
-      "shouldTranslate" : false
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось загрузить заметку."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося завантажити нотатку."
+          }
+        }
+      }
     },
     "Couldn't load the timer for this alarm." : {
       "comment" : "Persistence error when fetching the timer by alarm ID",
@@ -462,6 +475,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Не вдалося завантажити цей сеанс сну."
+          }
+        }
+      }
+    },
+    "Couldn't load your focus queue." : {
+      "comment" : "Persistence error when fetching queued focus tasks",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось загрузить очередь фокус-задач."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося завантажити чергу фокус-завдань."
           }
         }
       }
@@ -536,7 +566,20 @@
     },
     "Couldn't migrate dream recordings to notes." : {
       "comment" : "Persistence error when migrating existing dream recordings into notes",
-      "shouldTranslate" : false
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось перенести записи снов в заметки."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не вдалося перенести записи снів у нотатки."
+          }
+        }
+      }
     },
     "Couldn't pause the timer." : {
       "comment" : "Error when timer pause fails",
@@ -810,19 +853,19 @@
         }
       }
     },
-    "Focus label" : {
-      "comment" : "Placeholder for the focus label in history rows",
+    "Empty task name" : {
+      "comment" : "Fallback title for a completed focus session without a task name",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Метка фокуса"
+            "value" : "Без названия задачи"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Мітка фокусу"
+            "value" : "Без назви задачі"
           }
         }
       }
@@ -965,6 +1008,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ПІД ЧАС %1$@"
+          }
+        }
+      }
+    },
+    "is up" : {
+      "comment" : "Timer completion message shown after the app name Time",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "истекло"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "завершено"
           }
         }
       }
@@ -1394,6 +1454,23 @@
         }
       }
     },
+    "Smart wake-up modes" : {
+      "comment" : "Onboarding goal screen title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режимы умного пробуждения"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Режими розумного пробудження"
+          }
+        }
+      }
+    },
     "Source Code" : {
       "comment" : "Settings source code link label",
       "localizations" : {
@@ -1407,6 +1484,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вихідний код"
+          }
+        }
+      }
+    },
+    "Start" : {
+      "comment" : "Generic start button",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начать"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Почати"
           }
         }
       }
@@ -1477,6 +1571,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Зупинити запис"
+          }
+        }
+      }
+    },
+    "Task name" : {
+      "comment" : "Placeholder for the completed focus session task name",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название задачи"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Назва задачі"
           }
         }
       }
@@ -1579,23 +1690,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ЧАС"
-          }
-        }
-      }
-    },
-    "Time is up" : {
-      "comment" : "Timer completion message",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Время вышло"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Час вийшов"
           }
         }
       }
@@ -1787,6 +1881,23 @@
         }
       }
     },
+    "Up Next" : {
+      "comment" : "Section title for queued focus tasks",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далее"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Далі"
+          }
+        }
+      }
+    },
     "Waiting for Network" : {
       "comment" : "Network loading state on the paywall",
       "localizations" : {
@@ -1800,23 +1911,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Очікування мережі"
-          }
-        }
-      }
-    },
-    "Wake while dreaming, when memories are easier to capture." : {
-      "comment" : "Onboarding dream wake-up goal description",
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Просыпайтесь во время сновидения, когда воспоминания легче записать."
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Прокидайтеся під час сновидіння, коли спогади легше записати."
           }
         }
       }
@@ -1855,6 +1949,23 @@
         }
       }
     },
+    "Wake while dreaming, when memories are easier to capture." : {
+      "comment" : "Onboarding dream wake-up goal description",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Просыпайтесь во время сновидения, когда воспоминания легче записать."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прокидайтеся під час сновидіння, коли спогади легше записати."
+          }
+        }
+      }
+    },
     "Wake-up times:" : {
       "comment" : "Header above the list of wake-up time options",
       "localizations" : {
@@ -1885,6 +1996,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ТИЖНІВ"
+          }
+        }
+      }
+    },
+    "What was done and achieved?" : {
+      "comment" : "Placeholder for notes attached to a completed focus session",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что было сделано и достигнуто?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Що було зроблено й досягнуто?"
           }
         }
       }

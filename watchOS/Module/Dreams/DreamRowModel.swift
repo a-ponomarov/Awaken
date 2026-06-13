@@ -1,6 +1,6 @@
 //
 //  DreamRowModel.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -19,15 +19,18 @@ final class DreamRowModel {
   var isShowingActions = false
 
   private let audioPlayer: AudioPlayer
+  private let audioRecorder: AudioRecorder
   private let persistence: Persistence
 
   init(
     dream: Dream,
     audioPlayer: AudioPlayer,
+    audioRecorder: AudioRecorder,
     persistence: Persistence
   ) {
     self.dream = dream
     self.audioPlayer = audioPlayer
+    self.audioRecorder = audioRecorder
     self.persistence = persistence
   }
 
@@ -54,6 +57,7 @@ final class DreamRowModel {
     if isCurrent && audioPlayer.isPlaying {
       audioPlayer.pause()
     } else {
+      guard !audioRecorder.isRecording else { return }
       audioPlayer.play(dream: dream)
       if progress > 0 {
         audioPlayer.seek(to: progress)
@@ -62,6 +66,8 @@ final class DreamRowModel {
   }
 
   func handleWaveformSeek(_ newProgress: Double) {
+    guard isCurrent || !audioRecorder.isRecording else { return }
+
     if !isCurrent {
       audioPlayer.play(dream: dream)
     }

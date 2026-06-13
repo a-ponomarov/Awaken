@@ -1,6 +1,6 @@
 //
-//  AwakenApp.swift
-//  Awaken
+//  TimeWatchApp.swift
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -10,7 +10,7 @@ import SwiftData
 import WatchKit
 
 @main
-struct AwakenWatchApp: App {
+struct TimeWatchApp: App {
 
   @WKApplicationDelegateAdaptor(AppDelegate.self) private var delegate
 
@@ -22,6 +22,7 @@ struct AwakenWatchApp: App {
     .environment(\.persistence, delegate.container.persistence)
     .environment(delegate.container.coordinator)
     .environment(delegate.container.audioPlayer)
+    .environment(delegate.container.audioRecorder)
     .environment(delegate.container.healthSource)
     .environment(delegate.container.network)
     .environment(delegate.container.session)

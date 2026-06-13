@@ -1,6 +1,6 @@
 //
 //  DreamRow.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -12,6 +12,7 @@ struct DreamRow: View {
   let dream: Dream
   let showsDetails: Bool
   let audioPlayer: AudioPlayer
+  @Environment(AudioRecorder.self) private var audioRecorder
   @Environment(\.persistence) private var persistence
 
   var body: some View {
@@ -19,6 +20,7 @@ struct DreamRow: View {
       dream: dream,
       showsDetails: showsDetails,
       audioPlayer: audioPlayer,
+      audioRecorder: audioRecorder,
       persistence: persistence
     )
   }
@@ -30,6 +32,7 @@ private struct DreamRowContent: View {
   let dream: Dream
   let showsDetails: Bool
   let audioPlayer: AudioPlayer
+  let audioRecorder: AudioRecorder
   @State private var model: DreamRowModel
   @State private var timerTask: Task<Void, Never>?
 
@@ -37,15 +40,18 @@ private struct DreamRowContent: View {
     dream: Dream,
     showsDetails: Bool,
     audioPlayer: AudioPlayer,
+    audioRecorder: AudioRecorder,
     persistence: Persistence
   ) {
     self.dream = dream
     self.showsDetails = showsDetails
     self.audioPlayer = audioPlayer
+    self.audioRecorder = audioRecorder
     _model = State(
       initialValue: DreamRowModel(
         dream: dream,
         audioPlayer: audioPlayer,
+        audioRecorder: audioRecorder,
         persistence: persistence
       )
     )
@@ -61,7 +67,7 @@ private struct DreamRowContent: View {
           Spacer()
           PlayButton(
             isPlaying: model.isPlaying,
-            progress: model.isCurrent ? $bindableModel.progress : .constant(0),
+            progress: $bindableModel.progress,
             completion: model.handlePlayButton
           )
         }

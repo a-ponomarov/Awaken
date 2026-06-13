@@ -1,6 +1,6 @@
 //
 //  AppConstants.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/2/2026.
 //
@@ -9,8 +9,8 @@ import Foundation
 
 enum AppConstants {
 
-  static let appName = "Awaken"
-  static let sourceCodeURL = URL(string: "https://github.com/a-ponomarov/Awaken")
+  static let appName = "Time"
+  static let sourceCodeURL = URL(string: "https://github.com/a-ponomarov/Time")
   static let supportURL = URL(string: "https://t.me/+pU7DsByCO14zMjEy")
   static let privacyPolicyURL = URL(
     string:

@@ -427,7 +427,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B240E6962E7BE27500D2B6ED /* Build configuration list for PBXProject "Awaken" */;
+			buildConfigurationList = B240E6962E7BE27500D2B6ED /* Build configuration list for PBXProject "Time" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -540,7 +540,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = iOS/Widget/Resource/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 77;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67CSC8R9LU;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -560,7 +560,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.2;
-				MARKETING_VERSION = 11.11.11;
+				MARKETING_VERSION = 13.2;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -585,7 +585,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = iOS/Widget/Resource/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 77;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67CSC8R9LU;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -605,7 +605,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.2;
-				MARKETING_VERSION = 11.11.11;
+				MARKETING_VERSION = 13.2;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -754,12 +754,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = watchOS/Resource/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 77;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67CSC8R9LU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Awaken;
+				INFOPLIST_KEY_CFBundleDisplayName = Time;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Access heart rate for intelligent wake and sleep stages for machine learning personalization";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Access heart rate for intelligent wake and sleep stages for machine learning personalization";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record dream audio";
@@ -770,7 +770,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11.11.11;
+				MARKETING_VERSION = 13.2;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -793,12 +793,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = watchOS/Resource/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 77;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67CSC8R9LU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Awaken;
+				INFOPLIST_KEY_CFBundleDisplayName = Time;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Access heart rate for intelligent wake and sleep stages for machine learning personalization";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Access heart rate for intelligent wake and sleep stages for machine learning personalization";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record dream audio";
@@ -809,7 +809,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11.11.11;
+				MARKETING_VERSION = 13.2;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -833,14 +833,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iOS/Resource/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 77;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67CSC8R9LU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Awaken;
+				INFOPLIST_KEY_CFBundleDisplayName = Time;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record dream audio";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App uses the microphone to record audio notes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -851,7 +851,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11.11.11;
+				MARKETING_VERSION = 13.2;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -876,14 +876,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = iOS/Resource/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 77;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67CSC8R9LU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Resource/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Awaken;
+				INFOPLIST_KEY_CFBundleDisplayName = Time;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Record dream audio";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App uses the microphone to record audio notes.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -894,7 +894,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 11.11.11;
+				MARKETING_VERSION = 13.2;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -920,7 +920,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = watchOS/Widget/Resource/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 77;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67CSC8R9LU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/Widget/Resource/Info.plist;
@@ -932,7 +932,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 11.11.11;
+				MARKETING_VERSION = 13.2;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -955,7 +955,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = watchOS/Widget/Resource/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 77;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67CSC8R9LU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = watchOS/Widget/Resource/Info.plist;
@@ -967,7 +967,7 @@
 					"@executable_path/../../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 11.11.11;
+				MARKETING_VERSION = 13.2;
 				PRODUCT_BUNDLE_IDENTIFIER = andrii.ponomarov.AwakeFlow.watchkitapp.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -996,7 +996,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B240E6962E7BE27500D2B6ED /* Build configuration list for PBXProject "Awaken" */ = {
+		B240E6962E7BE27500D2B6ED /* Build configuration list for PBXProject "Time" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B240E6B32E7BE27700D2B6ED /* Debug */,

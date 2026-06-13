@@ -1,6 +1,6 @@
 //
 //  CountdownLiveActivityView.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -98,6 +98,8 @@ struct CountdownButtons: View {
           tint: AppColors.accent,
           sizeStyle: buttonSizeStyle
         )
+
+        stopButton
       case .paused:
         CountdownLiveActivityButton(
           configuration: attributes.presentation.paused?.resumeButton,
@@ -105,22 +107,26 @@ struct CountdownButtons: View {
           tint: AppColors.accent,
           sizeStyle: buttonSizeStyle
         )
-      default:
-        EmptyView()
-      }
 
-      CountdownLiveActivityButton(
-        configuration: AlarmButton(
-          text: "Stop",
-          textColor: .white,
-          systemImageName: "stop.fill"
-        ),
-        intent: StopIntent(alarmID: state.alarmID.uuidString),
-        tint: AppColors.accent,
-        sizeStyle: buttonSizeStyle
-      )
+        stopButton
+      default:
+        stopButton
+      }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
+  }
+
+  private var stopButton: some View {
+    CountdownLiveActivityButton(
+      configuration: AlarmButton(
+        text: "Stop",
+        textColor: .white,
+        systemImageName: "stop.fill"
+      ),
+      intent: StopIntent(alarmID: state.alarmID.uuidString),
+      tint: AppColors.accent,
+      sizeStyle: buttonSizeStyle
+    )
   }
 
 }

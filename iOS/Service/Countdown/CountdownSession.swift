@@ -1,6 +1,6 @@
 //
 //  CountdownSession.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -103,16 +103,13 @@ final class CountdownSession {
 
   func applyPausedState(
     alarmID: UUID,
-    minimumScheduledDuration: TimeInterval,
+    remainingDuration: TimeInterval?,
     state: inout CountdownState
   ) {
     state.session.alarmID = alarmID
     state.session.startedAt = state.session.startedAt ?? .now
     state.session.status = .paused
-    state.session.remainingDuration = max(
-      minimumScheduledDuration,
-      state.session.remainingDuration
-    )
+    state.session.remainingDuration = max(1, remainingDuration ?? state.session.remainingDuration)
     state.session.endDate = nil
   }
 

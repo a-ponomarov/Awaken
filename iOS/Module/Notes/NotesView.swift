@@ -1,6 +1,6 @@
 //
 //  NotesView.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/10/2026.
 //
@@ -13,7 +13,11 @@ struct NotesView: View {
   @Environment(\.persistence) private var persistence
   @Environment(Coordinator.self) private var coordinator
   @Environment(AudioPlayer.self) private var audioPlayer
-  @Query(sort: \Note.createdAt, order: .reverse) private var notes: [Note]
+  @Query(
+    filter: #Predicate<Note> { $0.focusSession == nil },
+    sort: \Note.createdAt,
+    order: .reverse
+  ) private var notes: [Note]
   @State private var pendingNoteID: UUID?
 
   var body: some View {

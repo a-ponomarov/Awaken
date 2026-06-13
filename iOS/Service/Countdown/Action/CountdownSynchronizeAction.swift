@@ -1,6 +1,6 @@
 //
 //  CountdownSynchronizeAction.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -68,7 +68,7 @@ final class CountdownSynchronizeAction {
         ? .stop
         : updatedState.session.remainingDuration == 0 ? .stop : .start
       return .updated(updatedState, clockDirective)
-    case .paused(let alarmID):
+    case .paused(let alarmID, let remainingDuration):
       guard let restoredState = await restoredStateIfNeeded(
         alarmID: alarmID,
         recovery: recovery,
@@ -84,7 +84,7 @@ final class CountdownSynchronizeAction {
       var updatedState = restoredState
       sessionMachine.applyPausedState(
         alarmID: alarmID,
-        minimumScheduledDuration: minimumScheduledDuration,
+        remainingDuration: remainingDuration,
         state: &updatedState
       )
       return .updated(updatedState, .stop)

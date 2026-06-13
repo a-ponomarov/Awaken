@@ -1,6 +1,6 @@
 //
 //  AppContainer.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -31,6 +31,7 @@ final class AppContainer {
   let persistence: Persistence
   let coordinator = Coordinator()
   let audioPlayer = AudioPlayer()
+  let audioRecorder = AudioRecorder()
   let network = Network()
   let healthSource = HealthSource()
   let motionSource = MotionSource()
@@ -62,6 +63,7 @@ final class AppContainer {
 
     Task { [persistence] in
       await persistence.ensureUser()
+      await persistence.cleanupOrphanedAudioFiles()
     }
   }
 

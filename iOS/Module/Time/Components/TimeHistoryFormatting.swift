@@ -1,6 +1,6 @@
 //
 //  TimeHistoryFormatting.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -30,7 +30,7 @@ extension TimeRecord {
 
   var timeHistoryTitleText: String {
     let trimmedTaskName = taskName.trimmingCharacters(in: .whitespacesAndNewlines)
-    return trimmedTaskName.isEmpty ? String.addFocusLabel : trimmedTaskName
+    return trimmedTaskName.isEmpty ? String.emptyTaskName : trimmedTaskName
   }
 
   var hasTaskName: Bool {

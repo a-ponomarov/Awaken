@@ -1,6 +1,6 @@
 //
 //  OnboardingInfoCard.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/10/2026.
 //
@@ -21,7 +21,7 @@ struct OnboardingInfoCard: View {
         .frame(width: 28)
 
       VStack(alignment: .leading, spacing: AppLayout.spacing) {
-        Text(title)
+        Text(title.uppercased())
           .font(AppFont.bodyMedium)
           .foregroundStyle(AppColors.primary)
 

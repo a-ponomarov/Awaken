@@ -1,6 +1,6 @@
 //
 //  WatchList.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/20/2026.
 //

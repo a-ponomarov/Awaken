@@ -1,6 +1,6 @@
 //
 //  TimeTextField.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/9/2026.
 //

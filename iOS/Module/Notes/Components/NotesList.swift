@@ -1,6 +1,6 @@
 //
 //  NotesList.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/10/2026.
 //

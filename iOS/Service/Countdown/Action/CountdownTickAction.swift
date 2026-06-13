@@ -1,6 +1,6 @@
 //
 //  CountdownTickAction.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -10,6 +10,7 @@ import Foundation
 enum CountdownTickActionResult {
 
   case none
+  case synchronizedPaused(CountdownState)
   case updated(CountdownState, stopClock: Bool)
   case finishSession
 
@@ -24,10 +25,22 @@ final class CountdownTickAction {
     sessionMachine: CountdownSession,
     state: CountdownState
   ) -> CountdownTickActionResult {
+    let alarmState = alarmService.currentState()
+
+    if case .paused(let alarmID, let remainingDuration) = alarmState, state.session.status != .idle {
+      var updatedState = state
+      sessionMachine.applyPausedState(
+        alarmID: alarmID,
+        remainingDuration: remainingDuration,
+        state: &updatedState
+      )
+      return .synchronizedPaused(updatedState)
+    }
+
     switch runtime.tickResult(
       status: state.session.status,
       endDate: state.session.endDate,
-      alarmState: alarmService.currentState()
+      alarmState: alarmState
     ) {
     case .idle:
       return .none

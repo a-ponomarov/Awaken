@@ -1,6 +1,6 @@
 //
 //  Persistence+Time.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -91,6 +91,7 @@ extension Persistence {
       }
     )
     for record in try modelContext.fetch(descriptor) {
+      deleteAudioFiles(for: record.note?.dreams ?? [])
       modelContext.delete(record)
     }
     try trySave()
@@ -105,7 +106,30 @@ extension Persistence {
     )
     guard let record = try modelContext.fetch(descriptor).first else { return }
     record.taskName = taskName
+    record.note?.title = taskName
+    record.note?.updatedAt = .now
     try trySave()
+  }
+
+  func ensureTimeRecordNote(id: UUID) throws -> UUID? {
+    let descriptor = FetchDescriptor<Time>(
+      predicate: #Predicate {
+        $0.id == id &&
+        $0.isCurrent == false
+      }
+    )
+    guard let record = try modelContext.fetch(descriptor).first else { return nil }
+
+    if let note = record.note {
+      return note.id
+    }
+
+    let note = Note(title: record.taskName, text: "")
+    note.createdAt = record.endedAt ?? record.startedAt ?? .now
+    record.note = note
+    modelContext.insert(note)
+    try trySave()
+    return note.id
   }
 
   func saveTimeSession(
@@ -138,6 +162,57 @@ extension Persistence {
     save()
   }
 
+  func fetchTimeFocusQueue() -> [QueuedTimeRecord] {
+    let descriptor = FetchDescriptor<QueuedTime>(
+      sortBy: [SortDescriptor(\.createdAt, order: .forward)]
+    )
+    do {
+      return try modelContext.fetch(descriptor).map(\.entry)
+    } catch {
+      logger?.log(
+        .error(PersistenceError.fetchTimeFocusQueueFailed.localizedDescription)
+      )
+      return []
+    }
+  }
+
+  func appendQueuedTime(_ focusTask: QueuedTimeRecord) throws {
+    let model = QueuedTime(
+      id: focusTask.id,
+      title: focusTask.title,
+      createdAt: focusTask.createdAt
+    )
+    model.user = user
+    modelContext.insert(model)
+    try trySave()
+  }
+
+  func updateQueuedTime(_ focusTask: QueuedTimeRecord) throws {
+    let focusTaskID = focusTask.id
+    var descriptor = FetchDescriptor<QueuedTime>(
+      predicate: #Predicate {
+        $0.id == focusTaskID
+      }
+    )
+    descriptor.fetchLimit = 1
+
+    guard let task = try modelContext.fetch(descriptor).first else { return }
+    task.title = focusTask.title
+    try trySave()
+  }
+
+  func deleteQueuedTime(id: UUID) throws {
+    let descriptor = FetchDescriptor<QueuedTime>(
+      predicate: #Predicate {
+        $0.id == id
+      }
+    )
+    for task in try modelContext.fetch(descriptor) {
+      modelContext.delete(task)
+    }
+    try trySave()
+  }
+
   // MARK: - Private Helpers
 
   private func fetchCurrentTimeModel() -> Time? {
@@ -156,6 +231,17 @@ extension Persistence {
       plannedDuration: time.plannedDuration,
       remainingDuration: time.remainingDuration
     )
+  }
+
+  private func deleteAudioFiles(for dreams: [Dream]) {
+    for dream in dreams {
+      guard let audioFilename = dream.audioFilename else { continue }
+
+      let url = AudioFileManager.dir.appendingPathComponent(audioFilename)
+      if FileManager.default.fileExists(atPath: url.path) {
+        try? FileManager.default.removeItem(at: url)
+      }
+    }
   }
 
 }

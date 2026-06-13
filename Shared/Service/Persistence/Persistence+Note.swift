@@ -1,6 +1,6 @@
 //
 //  Persistence+Note.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 6/10/2026.
 //
@@ -87,6 +87,25 @@ extension Persistence {
       save()
     } catch {
       logger?.log(.error(PersistenceError.migrateDreamsToNotesFailed.localizedDescription))
+    }
+  }
+
+  /// Removes local audio files that are not referenced by any persisted dream record.
+  func cleanupOrphanedAudioFiles() {
+    do {
+      let dreams = try modelContext.fetch(FetchDescriptor<Dream>())
+      let linkedFilenames = Set(dreams.compactMap(\.audioFilename))
+      let fileURLs = try FileManager.default.contentsOfDirectory(
+        at: AudioFileManager.dir,
+        includingPropertiesForKeys: nil
+      )
+
+      for fileURL in fileURLs where fileURL.pathExtension == "m4a" {
+        guard !linkedFilenames.contains(fileURL.lastPathComponent) else { continue }
+        try? FileManager.default.removeItem(at: fileURL)
+      }
+    } catch {
+      logger?.log(.error(PersistenceError.cleanupOrphanedAudioFilesFailed.localizedDescription))
     }
   }
 

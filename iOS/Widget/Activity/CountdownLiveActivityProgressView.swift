@@ -1,6 +1,6 @@
 //
 //  CountdownLiveActivityProgressView.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -37,7 +37,8 @@ struct CountdownLiveActivityProgressView: View {
           }
         )
       default:
-        EmptyView()
+        Image(systemName: "timer")
+          .font(.system(size: 14, weight: .semibold))
       }
     }
     .progressViewStyle(.circular)

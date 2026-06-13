@@ -1,6 +1,6 @@
 //
 //  DurationSliderSheet.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -12,24 +12,34 @@ struct DurationSliderSheet: View {
   let minimumMinutes: Int
   let maximumMinutes: Int
   @Binding var selectedMinutes: Int
+  let actionTitle: String
   let onCancel: () -> Void
   let onDone: () -> Void
+
+  init(
+    minimumMinutes: Int,
+    maximumMinutes: Int,
+    selectedMinutes: Binding<Int>,
+    actionTitle: String = String.done,
+    onCancel: @escaping () -> Void,
+    onDone: @escaping () -> Void
+  ) {
+    self.minimumMinutes = minimumMinutes
+    self.maximumMinutes = maximumMinutes
+    self._selectedMinutes = selectedMinutes
+    self.actionTitle = actionTitle
+    self.onCancel = onCancel
+    self.onDone = onDone
+  }
 
   var body: some View {
     NavigationStack {
       VStack {
+
         Text(String.minutesShort(selectedMinutes))
           .font(.regular(size: 32))
           .foregroundStyle(.white)
           .frame(maxWidth: .infinity)
-
-        Stepper(
-          value: $selectedMinutes,
-          in: minimumMinutes ... maximumMinutes,
-          step: 1
-        ) { }
-          .tint(AppColors.primary)
-        .labelsHidden()
 
         Slider(
           value: Binding(
@@ -48,6 +58,17 @@ struct DurationSliderSheet: View {
 
           Spacer()
 
+          Stepper(
+            value: $selectedMinutes,
+            in: minimumMinutes ... maximumMinutes,
+            step: 1
+          ) { }
+            .tint(AppColors.primary)
+          .labelsHidden()
+          .padding(.top)
+
+          Spacer()
+
           Text(String.minutesShort(maximumMinutes))
             .font(.regular(size: 13))
             .foregroundStyle(.white)
@@ -61,7 +82,7 @@ struct DurationSliderSheet: View {
         }
 
         ToolbarItem(placement: .topBarTrailing) {
-          Button(String.done, action: onDone).tint(.white)
+          Button(actionTitle, action: onDone).tint(.white)
         }
       }
     }

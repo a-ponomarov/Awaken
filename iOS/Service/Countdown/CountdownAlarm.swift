@@ -1,10 +1,11 @@
 //
 //  CountdownAlarm.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
 
+import ActivityKit
 import AlarmKit
 import Foundation
 import SwiftUI
@@ -20,7 +21,7 @@ enum CountdownAlarmState: Equatable {
 
   case idle
   case running(alarmID: UUID)
-  case paused(alarmID: UUID)
+  case paused(alarmID: UUID, remainingDuration: TimeInterval?)
   case alerting(alarmID: UUID)
 
 }
@@ -86,7 +87,10 @@ final class CountdownAlarm {
 
     switch alarm.state {
     case .paused:
-      return .paused(alarmID: alarm.id)
+      return .paused(
+        alarmID: alarm.id,
+        remainingDuration: pausedRemainingDuration(alarmID: alarm.id)
+      )
     case .countdown, .scheduled:
       return .running(alarmID: alarm.id)
     case .alerting:
@@ -118,6 +122,21 @@ final class CountdownAlarm {
       logger.log(.error(CountdownAlarmError.loadFailed.localizedDescription))
       return nil
     }
+  }
+
+  private func pausedRemainingDuration(alarmID: UUID) -> TimeInterval? {
+    Activity<AlarmAttributes<CountdownLiveActivityMetadata>>.activities
+      .compactMap { activity -> TimeInterval? in
+        let state = activity.content.state
+        guard state.alarmID == alarmID else { return nil }
+
+        if case .paused(let paused) = state.mode {
+          return max(1, paused.totalCountdownDuration - paused.previouslyElapsedDuration)
+        }
+
+        return nil
+      }
+      .first
   }
 
   func pause(alarmID: UUID) throws {

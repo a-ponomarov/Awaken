@@ -1,6 +1,6 @@
 //
 //  CountdownLiveActivityText.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -32,31 +32,32 @@ struct CountdownLiveActivityText: View {
   }
 
   var body: some View {
-    Group {
-      switch state.mode {
-      case .countdown(let countdown):
-        Text(timerInterval: Date.now ... countdown.fireDate, countsDown: true)
-      case .paused(let paused):
-        let remaining = Duration.seconds(
-          paused.totalCountdownDuration - paused.previouslyElapsedDuration
-        )
-        let pattern: Duration.TimeFormatStyle.Pattern =
-          remaining > .seconds(Constants.secondsPerHour)
-          ? .hourMinuteSecond
-          : .minuteSecond
-        Text(remaining.formatted(.time(pattern: pattern)))
-      case .alert:
-        EmptyView()
-      default:
-        EmptyView()
-      }
+    content
+      .font(.bold(size: fontSize))
+      .monospacedDigit()
+      .foregroundStyle(.white)
+      .lineLimit(1)
+      .minimumScaleFactor(minimumScaleFactor)
+      .frame(maxWidth: maxWidth, alignment: .leading)
+  }
+
+  @ViewBuilder
+  private var content: some View {
+    switch state.mode {
+    case .countdown(let countdown):
+      Text(timerInterval: Date.now ... countdown.fireDate, countsDown: true)
+    case .paused(let paused):
+      let remaining = Duration.seconds(
+        paused.totalCountdownDuration - paused.previouslyElapsedDuration
+      )
+      let pattern: Duration.TimeFormatStyle.Pattern =
+        remaining > .seconds(Constants.secondsPerHour)
+        ? .hourMinuteSecond
+        : .minuteSecond
+      Text(remaining.formatted(.time(pattern: pattern)))
+    default:
+      Text("Done")
     }
-    .font(.bold(size: fontSize))
-    .monospacedDigit()
-    .foregroundStyle(.white)
-    .lineLimit(1)
-    .minimumScaleFactor(minimumScaleFactor)
-    .frame(maxWidth: maxWidth, alignment: .leading)
   }
 
   private var fontSize: Double {

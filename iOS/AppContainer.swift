@@ -1,6 +1,6 @@
 //
 //  AppContainer.swift
-//  Awaken
+//  Time
 //
 //  Created by Andrew Ponomarov on 5/5/2026.
 //
@@ -34,6 +34,7 @@ final class AppContainer {
   let store: Store
   let coordinator: Coordinator
   let audioPlayer: AudioPlayer
+  let audioRecorder: AudioRecorder
   let network: Network
   let alarmService: AlarmService
   let timeService: CountdownViewModel
@@ -56,6 +57,7 @@ final class AppContainer {
     self.store = Store(defaults: defaults)
     self.coordinator = Coordinator()
     self.audioPlayer = AudioPlayer()
+    self.audioRecorder = AudioRecorder()
     self.network = Network()
     self.alarmService = AlarmService(logger: logger)
     let countdownPersistence = CountdownPersistence(persistence: persistence)
@@ -74,6 +76,7 @@ final class AppContainer {
     Task { [persistence] in
       await persistence.ensureUser()
       await persistence.migrateStandaloneDreamsToNotes()
+      await persistence.cleanupOrphanedAudioFiles()
     }
   }
 
