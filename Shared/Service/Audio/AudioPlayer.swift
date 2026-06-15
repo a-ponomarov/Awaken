@@ -25,6 +25,21 @@ final class AudioPlayer: NSObject {
 
   private var audioPlayer: AVAudioPlayer?
 
+  override init() {
+    super.init()
+
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(handleAudioSessionInterruptionNotification),
+      name: AVAudioSession.interruptionNotification,
+      object: AVAudioSession.sharedInstance()
+    )
+  }
+
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+
   func play(url: URL) {
     stop()
     do {
@@ -68,6 +83,33 @@ final class AudioPlayer: NSObject {
 
   private func setupPlayingState() {
     isPlaying = audioPlayer?.isPlaying ?? false
+  }
+
+  @objc
+  nonisolated private func handleAudioSessionInterruptionNotification(_ notification: Notification) {
+    let typeValue = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
+
+    Task { @MainActor in
+      handleAudioSessionInterruption(typeValue: typeValue)
+    }
+  }
+
+  private func handleAudioSessionInterruption(typeValue: UInt?) {
+    guard let typeValue,
+          let type = AVAudioSession.InterruptionType(rawValue: typeValue)
+    else {
+      return
+    }
+
+    switch type {
+    case .began:
+      audioPlayer?.pause()
+      isPlaying = false
+    case .ended:
+      setupPlayingState()
+    @unknown default:
+      setupPlayingState()
+    }
   }
 
   private func activateAudioSession() throws {

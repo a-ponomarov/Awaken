@@ -13,6 +13,7 @@ struct NoteDetailView: View {
 
   @Environment(\.persistence) private var persistence
   @Environment(AudioPlayer.self) private var audioPlayer
+  @Environment(AudioRecorder.self) private var audioRecorder
   @Environment(\.dismiss) private var dismiss
   @State private var draftText = ""
   @State private var saveTask: Task<Void, Never>?
@@ -72,8 +73,13 @@ struct NoteDetailView: View {
     }
     .onDisappear {
       saveTask?.cancel()
-      guard !isDeleting else { return }
-      saveDraft()
+      if isDeleting {
+        discardRecordingIfNeeded()
+        return
+      }
+      let didFinishRecording = finishRecordingIfNeeded()
+      persistOrDeleteOnDismiss(hasPendingAudio: didFinishRecording)
+      stopPlaybackIfNeeded()
     }
   }
 
@@ -101,9 +107,19 @@ struct NoteDetailView: View {
     }
   }
 
-  private func saveDraft() {
+  private func persistOrDeleteOnDismiss(hasPendingAudio: Bool = false) {
     let text = draftText
-    saveTask?.cancel()
+    let isEmpty = text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    let hasAudio = hasPendingAudio || !note.dreams.isEmpty
+
+    if isEmpty && !hasAudio {
+      isDeleting = true
+      Task {
+        await persistence.deleteNote(id: note.id)
+      }
+      return
+    }
+
     Task {
       await persistence.updateNote(id: note.id, text: text)
     }
@@ -113,6 +129,7 @@ struct NoteDetailView: View {
     isDeleting = true
     saveTask?.cancel()
     stopPlaybackIfNeeded()
+    discardRecordingIfNeeded()
 
     Task {
       await persistence.deleteNote(id: note.id)
@@ -127,6 +144,21 @@ struct NoteDetailView: View {
        audioFilenames.contains(currentFilename) {
       audioPlayer.stop()
     }
+  }
+
+  private func finishRecordingIfNeeded() -> Bool {
+    guard let audioID = audioRecorder.stop() else { return false }
+
+    Task {
+      await persistence.saveNoteAudio(noteID: note.id, audioID: audioID)
+    }
+    return true
+  }
+
+  private func discardRecordingIfNeeded() {
+    guard let audioID = audioRecorder.stop() else { return }
+
+    try? FileManager.default.removeItem(at: AudioFileManager.fileURL(for: audioID))
   }
 
   private var audioFilenames: [String] {

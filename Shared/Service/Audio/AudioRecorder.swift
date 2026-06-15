@@ -7,6 +7,9 @@
 
 import AVFoundation
 import Observation
+#if os(iOS)
+import UIKit
+#endif
 
 @Observable
 @MainActor
@@ -24,6 +27,15 @@ final class AudioRecorder {
   var didStopRecording: ((UUID) -> Void)?
 
   private var recorder: AVAudioRecorder?
+
+  deinit {
+#if os(iOS)
+    Task { @MainActor in
+      UIApplication.shared.isIdleTimerDisabled = false
+    }
+#endif
+  }
+
   private var currentDreamID: UUID?
   private var interruptionObserver: NSObjectProtocol?
 
@@ -46,10 +58,19 @@ final class AudioRecorder {
       try AVAudioSession.sharedInstance().setCategory(.record)
       try AVAudioSession.sharedInstance().setActive(true)
 
-      recorder = try AVAudioRecorder(url: targetURL, settings: settings)
-      recorder?.record()
+      let recorder = try AVAudioRecorder(url: targetURL, settings: settings)
+      guard recorder.record() else {
+        print("AudioRecorder: failed to start recording")
+        currentDreamID = nil
+        try? AVAudioSession.sharedInstance().setActive(false)
+        return
+      }
 
+      self.recorder = recorder
       isRecording = true
+#if os(iOS)
+      UIApplication.shared.isIdleTimerDisabled = true
+#endif
       observeAudioSessionInterruptions()
     } catch {
       print("AudioRecorder: failed to start recording – \(error.localizedDescription)")
@@ -66,6 +87,9 @@ final class AudioRecorder {
 
     recorder.stop()
     isRecording = false
+#if os(iOS)
+    UIApplication.shared.isIdleTimerDisabled = false
+#endif
     try? AVAudioSession.sharedInstance().setActive(false)
     removeAudioSessionObservers()
 

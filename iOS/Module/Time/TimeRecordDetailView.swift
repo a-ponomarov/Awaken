@@ -20,6 +20,7 @@ struct TimeRecordDetailView: View {
 
   @Environment(\.persistence) private var persistence
   @Environment(AudioPlayer.self) private var audioPlayer
+  @Environment(AudioRecorder.self) private var audioRecorder
   @Environment(\.dismiss) private var dismiss
   @State private var labelDraft = ""
   @State private var noteDraft = ""
@@ -68,6 +69,7 @@ struct TimeRecordDetailView: View {
     .onChange(of: noteDraft) { _, _ in scheduleDraftSave() }
     .onDisappear {
       saveTask?.cancel()
+      finishRecordingIfNeeded()
       saveDrafts()
       stopPlaybackIfNeeded()
     }
@@ -155,6 +157,14 @@ struct TimeRecordDetailView: View {
     if let currentFilename = audioPlayer.url?.lastPathComponent,
        audioFilenames.contains(currentFilename) {
       audioPlayer.stop()
+    }
+  }
+
+  private func finishRecordingIfNeeded() {
+    guard let audioID = audioRecorder.stop() else { return }
+
+    Task {
+      await persistence.saveNoteAudio(noteID: note.id, audioID: audioID)
     }
   }
 
