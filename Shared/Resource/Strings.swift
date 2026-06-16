@@ -13,6 +13,7 @@ enum StorageKey {
   static let lastSelectedTime = "LastSelectedTime"
   static let wakeStageOption = "WakeStageOption"
   static let fallAsleepBufferMinutes = "fallAsleepBufferMinutes"
+  static let realityCheckScheduleSettings = "RealityCheckScheduleSettings"
   static let subscriptionExpirationDate = "SubscriptionExpirationDate"
 
 }
@@ -72,6 +73,94 @@ extension String {
     localized: "To notify you when task timers end, the app needs permission to schedule alarms. You can grant it in Settings.",
     comment: "Shown when alarm permission is denied for the Time module"
   )
+  static let realityChecksTitle = String(
+    localized: "Reality Checks",
+    comment: "Title for reality check notification settings"
+  )
+  static let realityChecksExplanation = String(
+    localized: "Reality checks help you notice the moment and ask: am I dreaming? If not, feel that you are awake. Repeating this habit can help the same question surface in dreams.",
+    comment: "Explains why reality check notifications exist"
+  )
+  static let realityCheckPermissionMessage = String(
+    localized: "To send reality check reminders, the app needs notification permission. You can grant it in Settings.",
+    comment: "Shown when notification permission is denied for reality checks"
+  )
+  static let realityCheckDailyCount = String(
+    localized: "Daily reminders",
+    comment: "Label for the number of reality check notifications per day"
+  )
+  static let realityCheckSchedule = String(
+    localized: "Schedule",
+    comment: "Section title for reality check notification time ranges"
+  )
+  static let realityCheckFrom = String(
+    localized: "FROM",
+    comment: "Short label above the reality check start time picker"
+  )
+  static let realityCheckStartTime = String(
+    localized: "Start time",
+    comment: "Accessibility label for reality check range start time"
+  )
+  static let realityCheckTo = String(
+    localized: "TO",
+    comment: "Short label above the reality check end time picker"
+  )
+  static let realityCheckEndTime = String(
+    localized: "End time",
+    comment: "Accessibility label for reality check range end time"
+  )
+  static let realityCheckNotificationTitle = String(
+    localized: "Reality Check",
+    comment: "Reality check local notification title"
+  )
+  static let realityCheckNotificationBodies = [
+    String(
+      localized: "Look around. Notice: does this feel real?",
+      comment: "Reality check local notification body"
+    ),
+    String(
+      localized: "Feel your hands. Are you awake?",
+      comment: "Reality check local notification body"
+    ),
+    String(
+      localized: "Notice the moment. Are you dreaming?",
+      comment: "Reality check local notification body"
+    ),
+    String(
+      localized: "Feel your breath. Is this real?",
+      comment: "Reality check local notification body"
+    )
+  ]
+  static func realityCheckCount(_ count: Int) -> String {
+    String.localizedStringWithFormat(
+      String(localized: "%lld per day", comment: "Reality check notifications count per day"),
+      Int64(count)
+    )
+  }
+  static func realityCheckIntervalSeconds(_ seconds: Int) -> String {
+    String.localizedStringWithFormat(
+      String(localized: "randomly about every %lld sec", comment: "Reality check notification interval in seconds"),
+      Int64(seconds)
+    )
+  }
+  static func realityCheckIntervalMinutes(_ minutes: Int) -> String {
+    String.localizedStringWithFormat(
+      String(localized: "randomly about every %lld min", comment: "Reality check notification interval in minutes"),
+      Int64(minutes)
+    )
+  }
+  static func realityCheckIntervalHours(_ hours: Int) -> String {
+    String.localizedStringWithFormat(
+      String(localized: "randomly about every %lld hr", comment: "Reality check notification interval in hours"),
+      Int64(hours)
+    )
+  }
+  static func realityCheckIntervalHoursDecimal(_ hours: Double) -> String {
+    String.localizedStringWithFormat(
+      String(localized: "randomly about every %.1f hr", comment: "Reality check notification interval in decimal hours"),
+      hours
+    )
+  }
 
   // MARK: - Wake Stage
   nonisolated static let dreamStage = String(

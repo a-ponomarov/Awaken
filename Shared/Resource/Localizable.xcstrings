@@ -27,6 +27,91 @@
         }
       }
     },
+    "%lld per day" : {
+      "comment" : "Reality check notifications count per day",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld в день"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld на день"
+          }
+        }
+      }
+    },
+    "randomly about every %.1f hr" : {
+      "comment" : "Reality check notification interval in decimal hours",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "случайно примерно каждые %.1f ч"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "випадково приблизно кожні %.1f год"
+          }
+        }
+      }
+    },
+    "randomly about every %lld hr" : {
+      "comment" : "Reality check notification interval in hours",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "случайно примерно каждые %lld ч"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "випадково приблизно кожні %lld год"
+          }
+        }
+      }
+    },
+    "randomly about every %lld min" : {
+      "comment" : "Reality check notification interval in minutes",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "случайно примерно каждые %lld мин"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "випадково приблизно кожні %lld хв"
+          }
+        }
+      }
+    },
+    "randomly about every %lld sec" : {
+      "comment" : "Reality check notification interval in seconds",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "случайно примерно каждые %lld сек"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "випадково приблизно кожні %lld с"
+          }
+        }
+      }
+    },
     "Add audio" : {
       "comment" : "A button that adds an audio note",
       "localizations" : {
@@ -666,6 +751,23 @@
         }
       }
     },
+    "Daily reminders" : {
+      "comment" : "Label for the number of reality check notifications per day",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ежедневные напоминания"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Щоденні нагадування"
+          }
+        }
+      }
+    },
     "DATE" : {
       "comment" : "Field label for date",
       "localizations" : {
@@ -870,6 +972,57 @@
         }
       }
     },
+    "End time" : {
+      "comment" : "Accessibility label for reality check range end time",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время окончания"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Час завершення"
+          }
+        }
+      }
+    },
+    "Feel your breath. Is this real?" : {
+      "comment" : "Reality check local notification body",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Почувствуйте дыхание. Это реально?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відчуйте дихання. Це реально?"
+          }
+        }
+      }
+    },
+    "Feel your hands. Are you awake?" : {
+      "comment" : "Reality check local notification body",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Почувствуйте руки. Вы бодрствуете?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відчуйте руки. Ви не спите?"
+          }
+        }
+      }
+    },
     "Focus timer" : {
       "comment" : "Onboarding timer feature title",
       "localizations" : {
@@ -917,6 +1070,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "свіжість"
+          }
+        }
+      }
+    },
+    "FROM" : {
+      "comment" : "Short label above the reality check start time picker",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "С"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "З"
           }
         }
       }
@@ -1063,6 +1233,23 @@
         }
       }
     },
+    "Look around. Notice: does this feel real?" : {
+      "comment" : "Reality check local notification body",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Осмотритесь. Осознайте: это реально?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Озирніться. Усвідомте: це реально?"
+          }
+        }
+      }
+    },
     "lucidity" : {
       "comment" : "Wake-stage option subtitle: waking during REM gives lucid/aware feeling",
       "localizations" : {
@@ -1161,6 +1348,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Нотатки"
+          }
+        }
+      }
+    },
+    "Notice the moment. Are you dreaming?" : {
+      "comment" : "Reality check local notification body",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Осознайте момент. Вы во сне?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усвідомте момент. Ви уві сні?"
           }
         }
       }
@@ -1284,6 +1488,57 @@
         }
       }
     },
+    "Reality Check" : {
+      "comment" : "Reality check local notification title",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверка реальности"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перевірка реальності"
+          }
+        }
+      }
+    },
+    "Reality Checks" : {
+      "comment" : "Title for reality check notification settings",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверки реальности"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перевірки реальності"
+          }
+        }
+      }
+    },
+    "Reality checks help you notice the moment and ask: am I dreaming? If not, feel that you are awake. Repeating this habit can help the same question surface in dreams." : {
+      "comment" : "Explains why reality check notifications exist",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверки реальности помогают осознать момент и спросить: я во сне? Если нет, почувствуйте, что вы бодрствуете. Повторение этой привычки поможет тому же вопросу появляться во снах."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перевірки реальності допомагають усвідомити момент і запитати: я уві сні? Якщо ні, відчуйте, що ви не спите. Повторення цієї звички допоможе тому самому питанню виникати у снах."
+          }
+        }
+      }
+    },
     "Recommended wake-up time:" : {
       "comment" : "Header above the suggested wake-up times list",
       "localizations" : {
@@ -1365,6 +1620,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Працює"
+          }
+        }
+      }
+    },
+    "Schedule" : {
+      "comment" : "Section title for reality check notification time ranges",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Расписание"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Розклад"
           }
         }
       }
@@ -1518,6 +1790,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Почати сесію"
+          }
+        }
+      }
+    },
+    "Start time" : {
+      "comment" : "Accessibility label for reality check range start time",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время начала"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Час початку"
           }
         }
       }
@@ -1728,6 +2017,23 @@
         }
       }
     },
+    "TO" : {
+      "comment" : "Short label above the reality check end time picker",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ДО"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ДО"
+          }
+        }
+      }
+    },
     "To notify you when task timers end, the app needs permission to schedule alarms. You can grant it in Settings." : {
       "comment" : "Shown when alarm permission is denied for the Time module",
       "localizations" : {
@@ -1775,6 +2081,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Щоб записати ваш сон, застосунку потрібен доступ до мікрофона. Надайте його в Налаштуваннях"
+          }
+        }
+      }
+    },
+    "To send reality check reminders, the app needs notification permission. You can grant it in Settings." : {
+      "comment" : "Shown when notification permission is denied for reality checks",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтобы отправлять напоминания для проверки реальности, приложению нужно разрешение на уведомления. Вы можете дать его в Настройках."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Щоб надсилати нагадування для перевірки реальності, застосунку потрібен дозвіл на сповіщення. Ви можете надати його в Налаштуваннях."
           }
         }
       }

@@ -33,6 +33,10 @@ final class Coordinator {
     fullScreenCover = .noteDetail(note)
   }
 
+  func presentRealityChecks() {
+    sheet = .realityChecks
+  }
+
   func presentSettings() {
     sheet = .settings
   }

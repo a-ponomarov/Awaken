@@ -18,6 +18,7 @@ struct MainView: View {
   @Environment(\.scenePhase) private var scenePhase
   @Environment(Coordinator.self) private var coordinator
   @Environment(AlarmService.self) private var alarmService
+  @Environment(RealityCheckNotificationService.self) private var realityCheckNotificationService
   @Environment(CountdownViewModel.self) private var timeService
 
   var body: some View {
@@ -27,7 +28,10 @@ struct MainView: View {
       Tab("Alarm", systemImage: "bell", value: .alarm) {
         NavigationStack(path: $coordinator.alarmPath) {
           AlarmView()
-            .toolbar { settingsToolbarItem }
+            .toolbar {
+              realityChecksToolbarItem
+              settingsToolbarItem
+            }
         }
       }
 
@@ -48,6 +52,9 @@ struct MainView: View {
       guard phase == .active else { return }
       alarmService.refresh()
       timeService.refresh()
+      Task { @MainActor in
+        await realityCheckNotificationService.refreshScheduleIfNeeded()
+      }
     }
     .fullScreenCover(item: $coordinator.fullScreenCover) { destination in
       switch destination {
@@ -57,9 +64,22 @@ struct MainView: View {
     }
     .sheet(item: $coordinator.sheet) { sheet in
       switch sheet {
+      case .realityChecks:
+        RealityCheckView()
       case .settings:
         SettingsView()
       }
+    }
+  }
+
+  private var realityChecksToolbarItem: some ToolbarContent {
+    ToolbarItem(placement: .topBarLeading) {
+      Button {
+        coordinator.presentRealityChecks()
+      } label: {
+        Image(systemName: "sparkles")
+      }
+      .accessibilityLabel(String.realityChecksTitle)
     }
   }
 

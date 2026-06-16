@@ -25,6 +25,7 @@ struct TimeApp: App {
     .environment(container.audioPlayer)
     .environment(container.audioRecorder)
     .environment(container.alarmService)
+    .environment(container.realityCheckNotificationService)
     .environment(\.persistence, container.persistence)
   }
 

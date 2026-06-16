@@ -1,8 +1,8 @@
-# Time :)
+# Time: Watch Sleep Tracker
 
 A watchOS 26.2+ smart alarm that runs a WKExtendedRuntimeSession, samples Core Motion and HealthKit heart rate data, extracts features, and predicts sleep stages using an on-device Core ML model. Each Sleep session is stored in SwiftData and contains snapshots of extracted features with the predicted sleep stage. After each sleep session ends, those snapshots are matched against HealthKit sleep-stage labels and used to update the model.
 
-[View on the App Store](https://apps.apple.com/us/app/awaken-smart-alarm/id6752689654)
+[View on the App Store](https://apps.apple.com/us/app/time-watch-sleep-tracker/id6752689654)
 
 ## Runtime
 
@@ -92,6 +92,7 @@ Time/
       Main/           Root tab shell for Alarm, Notes, and Time
       Notes/          Notes list, note detail, text editor, and audio note cards
       Onboarding/     First-run onboarding flow and reusable onboarding cards
+      RealityCheck/   Reality check notification settings screen and view model
       Settings/       Settings sheet with support, source, and privacy links
       Subscription/   StoreKit subscription and paywall UI
       Time/           Focus timer, queue editing, duration controls, history, and task labels
@@ -101,6 +102,8 @@ Time/
       Coordinator/    Root state, sheet/full-screen destinations, and navigation paths
       Countdown/      Countdown state, runtime, persistence, recovery, history, alarm, and actions
       Network/        Shared network client exposed to the iOS app container
+      Notification/   Foreground notification presentation delegate
+      RealityCheck/   Local notification scheduling, persistence model, and refresh logic
       Store/          Subscription and entitlement state
     Widget/
       Activity/       Countdown Live Activity views, buttons, progress, text, and intents

@@ -7,6 +7,7 @@
 
 enum SheetDestination: String, Identifiable {
 
+  case realityChecks
   case settings
 
   var id: String { rawValue }

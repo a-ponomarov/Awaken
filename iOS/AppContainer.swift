@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+import UserNotifications
 
 private enum AppContainerError: Error {
 
@@ -33,10 +34,12 @@ final class AppContainer {
   let defaults: KeyValueStore
   let store: Store
   let coordinator: Coordinator
+  let notificationPresentationDelegate: NotificationPresentationDelegate
   let audioPlayer: AudioPlayer
   let audioRecorder: AudioRecorder
   let network: Network
   let alarmService: AlarmService
+  let realityCheckNotificationService: RealityCheckNotificationService
   let timeService: CountdownViewModel
 
   init() {
@@ -56,10 +59,14 @@ final class AppContainer {
     self.defaults = defaults
     self.store = Store(defaults: defaults)
     self.coordinator = Coordinator()
+    let notificationPresentationDelegate = NotificationPresentationDelegate()
+    self.notificationPresentationDelegate = notificationPresentationDelegate
+    UNUserNotificationCenter.current().delegate = notificationPresentationDelegate
     self.audioPlayer = AudioPlayer()
     self.audioRecorder = AudioRecorder()
     self.network = Network()
     self.alarmService = AlarmService(logger: logger)
+    self.realityCheckNotificationService = RealityCheckNotificationService(defaults: defaults)
     let countdownPersistence = CountdownPersistence(persistence: persistence)
     self.timeService = CountdownViewModel(
       alarmService: CountdownAlarm(logger: logger),
